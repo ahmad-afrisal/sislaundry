@@ -214,30 +214,30 @@
                       <!-- <small class="text-muted float-end">Default label</small> -->
                     </div>
                     <div class="card-body">
-                      <form>
+                      <form method="POST" action="store.php">
                         <div class="mb-3">
-                          <label class="form-label" for="basic-default-fullname">Nama Customer</label>
-                          <input type="text" class="form-control" id="basic-default-fullname" placeholder="" />
+                          <label class="form-label" for="name">Nama Customer</label>
+                          <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan Nama" autofocus required/>
                         </div>
                         <div class="mb-3">
-                          <label class="form-label" for="basic-default-fullname">No HP</label>
-                          <input type="text" class="form-control" id="basic-default-fullname" placeholder="" />
+                          <label class="form-label" for="phone_number">No HP</label>
+                          <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Masukkan Nomor Handphone" maxlength="12" required/>
                         </div>
                         <div class="mb-3">
-                          <label class="form-label" for="basic-default-fullname">Email</label>
-                          <input type="email" class="form-control" id="basic-default-fullname" placeholder="" />
+                          <label class="form-label" for="emai">Email</label>
+                          <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan Email" required/>
                         </div>
                         <div class="mb-3">
-                          <label class="form-label" for="basic-default-fullname">Alamat</label>
-                          <textarea name="" id="" class="form-control"></textarea>
+                          <label class="form-label" for="address">Alamat</label>
+                          <textarea name="address" id="address" class="form-control" name="address" required></textarea>
                         </div>
                         <div class="mb-3">
-                          <label class="form-label" for="basic-default-fullname">Tanggal Daftar</label>
-                          <input type="date" class="form-control" id="basic-default-fullname" placeholder="" />
+                          <label class="form-label" for="registration_date">Tanggal Daftar</label>
+                          <input type="date" class="form-control" id="registration_date" name="registration_date" placeholder="Masukkan Tanggal Daftar"  required/>
                         </div>
 
                         <button type="submit" class="btn btn-primary">Simpan</button>
-                        <a href="index.html" class="btn btn-secondary">Kembali</a>
+                        <a href="index.php" class="btn btn-secondary">Kembali</a>
                       </form>
                     </div>
                   </div>

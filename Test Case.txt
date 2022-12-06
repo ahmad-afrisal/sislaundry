@@ -1,0 +1,19 @@
+
+INSERT INTO costumers VALUES
+    ('1','Mujur Sihotang','085341995516','mujursihotang@gmail.com','Jl Perumnas No 4','2022-12-01'),
+    ('2','Sadina Hasanah','085240591592','sadinahasanah@gmail.com','Rt. 04/01 Guyangan Bangsri ','2022-12-02'),
+    ('3','Kajen Damanik','088293256300','kajendamanik@gmail.com','Bintang Alam Blok F no 14 B','2022-12-03'),
+    ('4','Ratna Suartini','085157856224','ratnasuartini@gmail.com','Jl. Surya Madya Kav A7','2022-12-04'),
+    ('5','Ilsa Nasyidah','085251491760','ilsanasyidah@gmail.com','Jl.Rambutan Timur VIII no.226','2022-12-05'),
+    ('6','Karsana Nababan','081340281523','karsananababan@gmail.com','Rt. 04/01 Guyangan Bangsri','2022-12-06'),
+    ('7','Rini Padmasari','085341996689','rinipadmasari@gmail.com','Jl. Swadaya IV No4 Kel. Rawa Terate','2022-12-07'),
+    ('8','Hana Astuti','085341996909','hanaastuti@gmail.com','Jl Letjen Haryono MT Kav 10','2022-12-08'),
+    ('9','Carla Andriani','085341991263','carlaandriani@gmail.com','jalan dahlia gang jati 24B sukajadi','2022-12-09'),
+    ('10','Harimurti Suryono','085341998907','harimurtisuryono@gmail.com','Cempaka Mas A/10','2022-12-10');
+
+INSERT INTO costumers VALUES
+    ('1','Ahmad Afrisal','085341995516','mujursihotang@gmail.com','Jl Perumnas No 4','2022-12-01'),
+    ('2','Sadina Hasanah','085240591592','sadinahasanah@gmail.com','Rt. 04/01 Guyangan Bangsri ','2022-12-02'),
+    ('3','Kajen Damanik','088293256300','kajendamanik@gmail.com','Bintang Alam Blok F no 14 B','2022-12-03'),
+    ('4','Ratna Suartini','085157856224','ratnasuartini@gmail.com','Jl. Surya Madya Kav A7','2022-12-04'),
+    ('5','Harimurti Suryono','085341998907','harimurtisuryono@gmail.com','Cempaka Mas A/10','2022-12-10');

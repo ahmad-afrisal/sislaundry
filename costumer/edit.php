@@ -1,4 +1,11 @@
+<?php
+  session_start();
+  include '../config.php';
+
+?>
+
 <!DOCTYPE html>
+
 <html
   lang="en"
   class="light-style layout-menu-fixed"
@@ -14,12 +21,11 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Dashboard - SISLaundry</title>
-
+    <title>Dashboard - Edit Costumer</title>
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -62,7 +68,7 @@
         <!-- Menu -->
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
-            <a href="index.html" class="app-brand-link">
+            <a href="index.php" class="app-brand-link">
               <span class="app-brand-text demo menu-text fw-bolder ms-2">SISlaundry</span>
             </a>
 
@@ -75,7 +81,7 @@
 
           <ul class="menu-inner py-1">
             <li class="menu-item ">
-                <a href="../dashboard.html" class="menu-link">
+                <a href="../dashboard.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
                 </a>
@@ -91,7 +97,7 @@
 
             <!-- Order -->
             <li class="menu-item">
-                <a href="../order/index.html" class="menu-link">
+                <a href="../order/index.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-cart-alt"></i>
                 <div data-i18n="Analytics">Order</div>
                 </a>
@@ -99,7 +105,7 @@
 
             <!-- Service -->
             <li class="menu-item">
-                <a href="../service/index.html" class="menu-link">
+                <a href="../service/index.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-package"></i>
                 <div data-i18n="Analytics">Service</div>
                 </a>
@@ -107,7 +113,7 @@
 
             <!-- List Admin -->
             <li class="menu-item">
-                <a href="../admin/index.html" class="menu-link ">
+                <a href="../admin/index.php" class="menu-link ">
                 <i class="menu-icon tf-icons bx bxs-user-detail"></i>
                 <div data-i18n="Analytics">List Admin</div>
                 </a>
@@ -115,7 +121,7 @@
             
             <!-- Logout -->
             <li class="menu-item">
-                <a href="../login.html" class="menu-link">
+                <a href="../login.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-log-out-circle"></i>
                 <div data-i18n="Analytics">Logout</div>
                 </a>
@@ -141,7 +147,6 @@
             <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
 
               <ul class="navbar-nav flex-row align-items-center ms-auto">
-                <!-- Place this tag where you want the button to render. -->
 
                 <!-- User -->
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
@@ -185,7 +190,7 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="../login.html">
+                      <a class="dropdown-item" href="../login.php">
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Log Out</span>
                       </a>
@@ -199,105 +204,59 @@
 
           <!-- / Navbar -->
 
-          <!-- Content wrapper -->
           <div class="content-wrapper">
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Costumers</h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Edit /</span> Edit ID : <?= $_GET['id']; ?></h4>
 
-              <!-- Basic Bootstrap Table -->
-              <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                  <h5 class="mb-0">List Costumers</h5>
-                  <div class="d-grid gap-2 d-md-block float-end">
-                    <button class="btn btn-outline-primary" type="button">Export</button>
-                    <a href="create.html" class="btn btn-primary" >Add New Customer</a>
+              <!-- Basic Layout -->
+              <div class="row">
+                <div class="col-xl">
+                  <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                      <h5 class="mb-0">Edit Data</h5>
+                      <!-- <small class="text-muted float-end">Default label</small> -->
+                    </div>
+                    <div class="card-body">
+                    <?php
+                        $id = $_GET['id'];
+                        $query = mysqli_query($config, "SELECT * FROM costumers WHERE ID=$id");
+                        while($data = mysqli_fetch_array($query)) {
+                        
+                      ?>
+                      <form method="POST" action="store.php">
+                          <div class="mb-3">
+                            <label class="form-label" for="name">Nama Customer</label>
+                            <input type="hidden" class="form-control" id="id" value="<?= $data['id'];?>" name="id" required/>
+                            <input type="text" class="form-control" id="name" value="<?= $data['name'];?>" name="name" placeholder="Masukkan Nama" autofocus required/>
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label" for="phone_number">No HP</label>
+                            <input type="text" class="form-control" id="phone_number" value="<?= $data['phone_number'];?>" name="phone_number" placeholder="Masukkan Nomor Handphone" maxlength="12" required/>
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label" for="emai">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" value="<?= $data['email'];?>" placeholder="Masukkan Email" required/>
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label" for="address">Alamat</label>
+                            <textarea name="address" id="address" class="form-control" name="address" required><?= $data['address'];?></textarea>
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label" for="registration_date">Tanggal Daftar</label>
+                            <input type="date" class="form-control" id="registration_date" value="<?= $data['registration_date'];?>" name="registration_date" placeholder="Masukkan Tanggal Daftar"  required/>
+                          </div>
+                          <button type="submit" class="btn btn-primary">Simpan</button>
+                          <a href="index.php" class="btn btn-secondary">Kembali</a>
+                      </form>
+                      <?php
+                        }
+                      ?>
+                    </div>
                   </div>
                 </div>
-                    <div class="card-body demo-vertical-spacing demo-only-element">
-                      <div class="input-group input-group-merge">
-                        <span class="input-group-text" id="basic-addon-search31"><i class="bx bx-search"></i></span>
-                        <input
-                          type="text"
-                          class="form-control"
-                          placeholder="Search..."
-                          aria-label="Search..."
-                          aria-describedby="basic-addon-search31"
-                        />
-                      </div>
-                    </div>
-                <div class="table-responsive text-nowrap">
-                  <table class="table" id="example" >
-                    <thead>
-                      <tr>
-                        <th>No</th>
-                        <th>ID</th>
-                        <th>Nama</th>
-                        <th>No HP</th>
-                        <th>Alamat</th>
-                        <th>Email</th>
-                        <th>Tanggal Daftar</th>
-                        <th>Aksi</th>
-                      </tr>
-                    </thead>
-                    <tbody class="table-border-bottom-0">
-                      <tr>
-                        <td><strong>1</strong></td>
-                        <td><strong>2</strong></td>
-                        <td>Lisa </td>
-                        <td>085341995xxx</td>
-                        <td>23 Oct 2022</td>
-                        <td>lisaisa@gmail.com</td>
-                        <td>
-                          22 Oktober 2022
-                        </td>
-                        <td>
-                          <a href="edit.html" class="btn  btn-icon btn-success">
-                            <span class="tf-icons bx bxs-message-square-edit"></span>
-                          </a>
-                          <button type="button" class="btn  btn-icon btn-danger">
-                            <span class="tf-icons bx bx-x"></span>
-                          </button>
-                        </td>
-                      </tr>
-
-                  </table>           
-                </div>
-                <div class="row justify-content-center">
-                  <div class="col-12 col-lg-6 mt-4"><p class="ms-3">Showing 1 to 7 of 100 entries</p></div>
-                  <div class="col-12 col-lg-6"> <nav aria-label="Page navigation" class="me-3 mt-3">
-                    <ul class="pagination justify-content-end">
-                      <li class="page-item prev">
-                        <a class="page-link" href="javascript:void(0);"
-                          ><i class="tf-icon bx bx-chevrons-left"></i
-                        ></a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:void(0);">1</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:void(0);">2</a>
-                      </li>
-                      <li class="page-item active">
-                        <a class="page-link" href="javascript:void(0);">3</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:void(0);">4</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:void(0);">5</a>
-                      </li>
-                      <li class="page-item next">
-                        <a class="page-link" href="javascript:void(0);"
-                          ><i class="tf-icon bx bx-chevrons-right"></i
-                        ></a>
-                      </li>
-                    </ul>
-                  </nav></div>
-                </div>
               </div>
-              <!--/ Basic Bootstrap Table -->
             </div>
             <!-- / Content -->
 
@@ -325,7 +284,7 @@
     <!-- / Layout wrapper -->
 
     <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
+
     <script src="../assets/vendor/libs/jquery/jquery.js"></script>
     <script src="../assets/vendor/libs/popper/popper.js"></script>
     <script src="../assets/vendor/js/bootstrap.js"></script>
@@ -344,5 +303,7 @@
     <script src="../assets/js/dashboards-analytics.js"></script>
 
 
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
   </body>
 </html>
