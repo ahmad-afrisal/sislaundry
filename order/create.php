@@ -1,3 +1,8 @@
+<?php
+  session_start();
+  include '../config.php';
+
+?>
 <!DOCTYPE html>
 <html
   lang="en"
@@ -221,11 +226,14 @@
                           placeholder="Type to search..."
                         />
                         <datalist id="datalistOptions">
-                          <option value="Ahmad Afrisal"></option>
-                          <option value="Mikha"></option>
-                          <option value="Wajida"></option>
-                          <option value="Fajar Hidayat"></option>
-                          <option value="Merry"></option>
+                        <?php
+                          $query = mysqli_query($config, "SELECT * FROM costumers");
+                          while($data = mysqli_fetch_array($query)) {
+                        ?>
+                          <option value="<?= $data['id'];?>"><?= $data['name']; ?></option>
+                        <?php
+                          }
+                        ?>
                         </datalist>
                         </div>
                         <div class="mb-3">
@@ -315,25 +323,23 @@
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
-    <script src="assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="assets/vendor/libs/popper/popper.js"></script>
-    <script src="assets/vendor/js/bootstrap.js"></script>
-    <script src="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="../assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="../assets/vendor/libs/popper/popper.js"></script>
+    <script src="../assets/vendor/js/bootstrap.js"></script>
+    <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
-    <script src="assets/vendor/js/menu.js"></script>
+    <script src="../assets/vendor/js/menu.js"></script>
     <!-- endbuild -->
 
     <!-- Vendors JS -->
-    <script src="assets/vendor/libs/apex-charts/apexcharts.js"></script>
+    <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
 
     <!-- Main JS -->
-    <script src="assets/js/main.js"></script>
+    <script src="../assets/js/main.js"></script>
 
     <!-- Page JS -->
-    <script src="assets/js/dashboards-analytics.js"></script>
+    <script src="../assets/js/dashboards-analytics.js"></script>
 
-
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  
   </body>
 </html>
