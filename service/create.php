@@ -99,7 +99,7 @@
 
             <!-- Service -->
             <li class="menu-item active">
-                <a href="" class="menu-link">
+                <a href="../service/index.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-package"></i>
                 <div data-i18n="Analytics">Service</div>
                 </a>
@@ -107,7 +107,7 @@
 
             <!-- List Admin -->
             <li class="menu-item">
-                <a href="../admin/index.html" class="menu-link ">
+                <a href="../admin/index.php" class="menu-link ">
                 <i class="menu-icon tf-icons bx bxs-user-detail"></i>
                 <div data-i18n="Analytics">List Admin</div>
                 </a>
@@ -203,41 +203,42 @@
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Admin /</span> Add New Admin</h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Service /</span> Add New Service</h4>
 
               <!-- Basic Layout -->
               <div class="row">
                 <div class="col-xl">
                   <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                      <h5 class="mb-0">New Admin</h5>
+                      <h5 class="mb-0">New Service</h5>
                       <!-- <small class="text-muted float-end">Default label</small> -->
                     </div>
                     <div class="card-body">
-                      <form>
-                        <div class="mb-3">
-                          <label class="form-label" for="basic-default-fullname">Nama Admin</label>
-                          <input type="text" class="form-control" id="basic-default-fullname" placeholder="" />
-                        </div>
-                        <div class="mb-3">
-                          <label class="form-label" for="basic-default-fullname">Username</label>
-                          <input type="text" class="form-control" id="basic-default-fullname" placeholder="" />
-                        </div>
-                        <div class="mb-3">
-                          <label class="form-label" for="basic-default-fullname">No HP</label>
-                          <input type="email" class="form-control" id="basic-default-fullname" placeholder="" />
-                        </div>
-                        <div class="mb-3">
-                          <label class="form-label" for="basic-default-fullname">Password</label>
-                          <input type="password" class="form-control" id="basic-default-fullname" placeholder="" />
-                        </div>
-                        <div class="mb-3">
-                          <label class="form-label" for="basic-default-fullname">Konfirmasi Password</label>
-                          <input type="password" class="form-control" id="basic-default-fullname" placeholder="" />
-                        </div>
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-                        <a href="index.html" class="btn btn-secondary">Kembali</a>
-                      </form>
+                      <form action="store.php" method="POST">
+                          <div class="mb-3">
+                            <label class="form-label" for="name">Nama Paket</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="" required />
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label" for="description">Deskripsi</label>
+                            <input type="text" class="form-control" id="description" name="description"  placeholder="" required/>
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label" for="price">Harga</label>
+                            <input type="text" class="form-control" id="price" name="price" placeholder="" required />
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label" for="basic-default-fullname">Kategori</label>
+                            <select class="form-select" id="" aria-label="Default select example" name="category" required>
+                              <option value="" selected>Pilih Category</option>
+                              <option value="PAKAIAN">PAKAIAN</option>
+                              <option value="SEPRAI">SEPRAI</option>
+                              <option value="BONEKA">BONEKA</option>
+                            </select>
+                          </div>
+                          <button type="submit" class="btn btn-primary">Simpan</button>
+                          <a href="index.php" class="btn btn-secondary">Kembali</a>
+                        </form>
                     </div>
                   </div>
                 </div>

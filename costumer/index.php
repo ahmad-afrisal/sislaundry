@@ -278,7 +278,7 @@
                   </table>           
                 </div>
                 <div class="row justify-content-center">
-                  <div class="col-12 col-lg-6 mt-4"><p class="ms-3">Showing 1 to 7 of 100 entries</p></div>
+                  <div class="col-12 col-lg-6 mt-4"><p class="ms-3">Showing 1 to 10 of 100 entries</p></div>
                   <div class="col-12 col-lg-6"> <nav aria-label="Page navigation" class="me-3 mt-3">
                     <ul class="pagination justify-content-end">
                       <li class="page-item prev">
