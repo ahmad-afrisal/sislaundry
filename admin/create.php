@@ -1,3 +1,7 @@
+<?php
+require '../function.php';
+?>
+
 <!DOCTYPE html>
 
 <html
@@ -212,8 +216,9 @@
                       <h5 class="mb-0">New Admin</h5>
                       <!-- <small class="text-muted float-end">Default label</small> -->
                     </div>
+                    <!-- table form -->
                     <div class="card-body">
-                      <form method="POST" action="store.php">
+                      <form method="POST" action="">
                         <div class="mb-3">
                           <label class="form-label" for="name">Nama Admin</label>
                           <input type="text" class="form-control" id="name" name="name" placeholder="" required/>
@@ -224,7 +229,7 @@
                         </div>
                         <div class="mb-3">
                           <label class="form-label" for="phone_number">No HP</label>
-                          <input type="email" class="form-control" id="phone_number" name="phone_number" placeholder="" required/>
+                          <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="" required/>
                         </div>
                         <div class="mb-3">
                           <label class="form-label" for="password">Password</label>
@@ -237,6 +242,7 @@
                         <button type="submit" class="btn btn-primary">Simpan</button>
                         <a href="index.html" class="btn btn-secondary">Kembali</a>
                       </form>
+
                     </div>
                   </div>
                 </div>

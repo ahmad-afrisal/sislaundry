@@ -71,7 +71,7 @@
               </div>
               <!-- /Logo -->
               <h4 class="mb-2 mt-3 text-center">Welcome to SISLaundry! 👋</h4>
-              <p class="mb-2 mt-3 text-center"><a href="login.html">Sign In</a> </p>
+              <p class="mb-2 mt-3 text-center"><a href="login.php">Sign In</a> </p>
               <br>
               <p class="mb-4">List Orders</p>
 
