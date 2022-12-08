@@ -14,4 +14,4 @@
 
     $_SESSION["sukses"] = 'pesan';
     
-    // header('location:index.php');
+    header('location:index.php');

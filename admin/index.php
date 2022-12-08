@@ -1,3 +1,9 @@
+<?php
+  session_start();
+  include '../config.php';
+
+?>
+
 <!DOCTYPE html>
 <html
   lang="en"
@@ -71,7 +77,7 @@
 
           <ul class="menu-inner py-1">
             <li class="menu-item ">
-                <a href="../dashboard.html" class="menu-link">
+                <a href="../dashboard.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
                 </a>
@@ -79,7 +85,7 @@
             
             <!-- Costumer -->
             <li class="menu-item">
-                <a href="../costumer/index.html" class="menu-link">
+                <a href="../costumer/index.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-user-plus"></i>
                 <div data-i18n="Analytics">Costumer</div>
                 </a>
@@ -87,7 +93,7 @@
 
             <!-- Order -->
             <li class="menu-item">
-                <a href="../order/index.html" class="menu-link">
+                <a href="../order/index.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-cart-alt"></i>
                 <div data-i18n="Analytics">Order</div>
                 </a>
@@ -95,7 +101,7 @@
 
             <!-- Service -->
             <li class="menu-item">
-                <a href="../service/index.html" class="menu-link">
+                <a href="../service/index.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-package"></i>
                 <div data-i18n="Analytics">Service</div>
                 </a>
@@ -103,7 +109,7 @@
 
             <!-- List Admin -->
             <li class="menu-item active">
-                <a href="../admin/index.html" class="menu-link ">
+                <a href="../admin/index.php" class="menu-link ">
                 <i class="menu-icon tf-icons bx bxs-user-detail"></i>
                 <div data-i18n="Analytics">List Admin</div>
                 </a>
@@ -111,7 +117,7 @@
             
             <!-- Logout -->
             <li class="menu-item">
-                <a href="../login.html" class="menu-link">
+                <a href="../login.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-log-out-circle"></i>
                 <div data-i18n="Analytics">Logout</div>
                 </a>
@@ -237,21 +243,37 @@
                       </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
+                      <?php 
+                        $no = 1;
+                        $query = mysqli_query($config, "SELECT * FROM users");
+                        while($data = mysqli_fetch_array($query)) {
+                      ?>
                       <tr>
-                        <td><strong>1</strong></td>
-                        <td>Lisa</td>
-                        <td>Lisa1 </td>
-                        <td>085341995616</td>
-                        <td><span class="badge bg-label-primary me-1">ADMIN</span></td>
+                        <td><strong><?= $no++; ?></strong></td>
+                        <td><?= $data['name']; ?></td>
+                        <td><?= $data['username']; ?></td>
+                        <td><?= $data['phone_number']; ?></td>
                         <td>
-                          <a href="edit.html" class="btn  btn-icon btn-success">
+                          <?php 
+                            if($data['roles'] == 'SUPERADMIN') {
+                              echo '<span class="badge bg-label-primary me-1">SUPERADMIN</span>';
+                            } else {
+                              echo '<span class="badge bg-label-info me-1">ADMIN</span>';
+                            }
+                          ?>
+                        </td>
+                        <td>
+                          <a href="edit.php?id=<?= $data['id'];?>" class="btn  btn-icon btn-success">
                             <span class="tf-icons bx bxs-message-square-edit"></span>
                           </a>
-                          <button type="button" class="btn  btn-icon btn-danger">
+                          <a href="delete.php?id=<?= $data['id'] ;?>" class="btn btn-icon btn-danger alert_notif">
                             <span class="tf-icons bx bx-x"></span>
-                          </button>
+                          </a>
                         </td>
                       </tr>
+                      <?php
+                        }
+                      ?>
 
                   </table>           
                 </div>
@@ -264,13 +286,13 @@
                           ><i class="tf-icon bx bx-chevrons-left"></i
                         ></a>
                       </li>
-                      <li class="page-item">
+                      <li class="page-item active">
                         <a class="page-link" href="javascript:void(0);">1</a>
                       </li>
                       <li class="page-item">
                         <a class="page-link" href="javascript:void(0);">2</a>
                       </li>
-                      <li class="page-item active">
+                      <li class="page-item">
                         <a class="page-link" href="javascript:void(0);">3</a>
                       </li>
                       <li class="page-item">
@@ -318,25 +340,61 @@
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
-    <script src="assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="assets/vendor/libs/popper/popper.js"></script>
-    <script src="assets/vendor/js/bootstrap.js"></script>
-    <script src="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="../assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="../assets/vendor/libs/popper/popper.js"></script>
+    <script src="../assets/vendor/js/bootstrap.js"></script>
+    <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
-    <script src="assets/vendor/js/menu.js"></script>
+    <script src="../assets/vendor/js/menu.js"></script>
     <!-- endbuild -->
 
     <!-- Vendors JS -->
-    <script src="assets/vendor/libs/apex-charts/apexcharts.js"></script>
+    <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
 
     <!-- Main JS -->
-    <script src="assets/js/main.js"></script>
+    <script src="../assets/js/main.js"></script>
 
     <!-- Page JS -->
-    <script src="assets/js/dashboards-analytics.js"></script>
-
-
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script src="../assets/js/dashboards-analytics.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.7/dist/sweetalert2.all.min.js"></script>
+    
+    <!-- jika ada session sukses maka tampilkan sweet alert dengan pesan yang telah di set
+        di dalam session sukses  -->
+        <?php if(@$_SESSION['sukses']){ ?>
+            <script>
+                Swal.fire({            
+                    icon: 'success',                   
+                    title: 'Sukses',                          
+                    timer: 3000,                                
+                    showConfirmButton: false
+                })
+            </script>
+        <!-- jangan lupa untuk menambahkan unset agar sweet alert tidak muncul lagi saat di refresh -->
+        <?php unset($_SESSION['sukses']); } ?>
+    
+    
+        <!-- di bawah ini adalah script untuk konfirmasi hapus data dengan sweet alert  -->
+        <script>
+            $('.alert_notif').on('click',function(){
+                var getLink = $(this).attr('href');
+                Swal.fire({
+                    title: "Yakin hapus data?",            
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    confirmButtonText: 'Ya',
+                    cancelButtonColor: '#3085d6',
+                    cancelButtonText: "Batal"
+                
+                }).then(result => {
+                    //jika klik ya maka arahkan ke delete.php
+                    if(result.isConfirmed){
+                        window.location.href = getLink
+                    }
+                })
+                return false;
+            });
+        </script>
   </body>
 </html>

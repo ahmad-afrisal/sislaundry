@@ -1,3 +1,9 @@
+<?php
+  session_start();
+  include '../config.php';
+
+?>
+
 <!DOCTYPE html>
 <html
   lang="en"
@@ -210,178 +216,74 @@
               <!-- Text alignment -->
               <h5 class="pb-1 mb-4">Pakaian</h5>
               <div class="row mb-5">
+                <?php 
+                  $no = 1;
+                  $query = mysqli_query($config, "SELECT * FROM service WHERE category='PAKAIAN'");
+                  while($data = mysqli_fetch_array($query)) {
+                ?>
                 <div class="col-md-6 col-lg-4">
                   <div class="card mb-3">
                     <div class="card-body">
-                      <h5 class="card-title">Special title treatment</h5>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                      <a href="edit.html" class="btn btn-primary">Edit</a>
+                      <h5 class="card-title"><?= $data['name'];?></h5>
+                      <p class="card-text"><?= $data['description'];?></p>
+                      <a href="edit.php?id=<?= $data['id']; ?>"" class="btn btn-primary">Edit</a>
+                      <a href="delete.php?id=<?= $data['id']; ?>"" class="btn btn-danger">Delete</a>
                     </div>
                   </div>
                 </div>
-                <div class="col-md-6 col-lg-4">
-                  <div class="card  mb-3">
-                    <div class="card-body">
-                      <h5 class="card-title">Special title treatment</h5>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                      <a href="edit.html" class="btn btn-primary">Edit</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                  <div class="card  mb-3">
-                    <div class="card-body">
-                      <h5 class="card-title">Special title treatment</h5>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                      <a href="edit.html" class="btn btn-primary">Edit</a>
-                    </div>
-                  </div>
-                </div>
+                <?php
+                  }
+                ?>
               </div>
               <!--/ Text alignment -->
 
               <!-- Text alignment -->
-              <h5 class="pb-1 mb-4">Selimut</h5>
+              <h5 class="pb-1 mb-4">Seprai</h5>
               <div class="row mb-5">
+                <?php 
+                  $no = 1;
+                  $query = mysqli_query($config, "SELECT * FROM service WHERE category='SEPRAI'");
+                  while($data = mysqli_fetch_array($query)) {
+                ?>
                 <div class="col-md-6 col-lg-4">
                   <div class="card mb-3">
                     <div class="card-body">
-                      <h5 class="card-title">Special title treatment</h5>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                      <a href="edit.html" class="btn btn-primary">Edit</a>
+                      <h5 class="card-title"><?= $data['name'];?></h5>
+                      <p class="card-text"><?= $data['description'];?></p>
+                      <a href="edit.php?id=<?= $data['id']; ?>" class="btn btn-primary">Edit</a>
+                      <a href="delete.php?id=<?= $data['id']; ?>" class="btn btn-danger">Delete</a>
                     </div>
                   </div>
                 </div>
-                <div class="col-md-6 col-lg-4">
-                  <div class="card  mb-3">
-                    <div class="card-body">
-                      <h5 class="card-title">Special title treatment</h5>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                      <a href="edit.html" class="btn btn-primary">Edit</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                  <div class="card  mb-3">
-                    <div class="card-body">
-                      <h5 class="card-title">Special title treatment</h5>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                      <a href="edit.html" class="btn btn-primary">Edit</a>
-                    </div>
-                  </div>
-                </div>
+                <?php
+                  }
+                ?>
               </div>
               <!--/ Text alignment -->
 
               <!-- Text alignment -->
               <h5 class="pb-1 mb-4">Karpet</h5>
               <div class="row mb-5">
+                <?php 
+                  $no = 1;
+                  $query = mysqli_query($config, "SELECT * FROM service WHERE category='KARPET'");
+                  while($data = mysqli_fetch_array($query)) {
+                ?>
                 <div class="col-md-6 col-lg-4">
                   <div class="card mb-3">
                     <div class="card-body">
-                      <h5 class="card-title">Special title treatment</h5>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                      <a href="edit.html" class="btn btn-primary">Edit</a>
+                      <h5 class="card-title"><?= $data['name'];?></h5>
+                      <p class="card-text"><?= $data['description'];?></p>
+                      <a href="edit.php?id=<?= $data['id']; ?>" class="btn btn-primary">Edit</a>
+                      <a href="delete.php?id=<?= $data['id']; ?>" class="btn btn-danger">Delete</a>
                     </div>
                   </div>
                 </div>
-                <div class="col-md-6 col-lg-4">
-                  <div class="card  mb-3">
-                    <div class="card-body">
-                      <h5 class="card-title">Special title treatment</h5>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                      <a href="edit.html" class="btn btn-primary">Edit</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                  <div class="card mb-3">
-                    <div class="card-body">
-                      <h5 class="card-title">Special title treatment</h5>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                      <a href="edit.html" class="btn btn-primary">Edit</a>
-                    </div>
-                  </div>
-                </div>
+                <?php
+                  }
+                ?>
               </div>
               <!--/ Text alignment -->
-
-
-              <!-- Grid Card -->
-              <!-- <h6 class="pb-1 mb-4 text-muted">Grid Card</h6>
-              <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
-                <div class="col">
-                  <div class="card h-100">
-                    <img class="card-img-top" src="../assets/img/elements/2.jpg" alt="Card image cap" />
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">
-                        This is a longer card with supporting text below as a natural lead-in to additional content.
-                        This content is a little bit longer.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card h-100">
-                    <img class="card-img-top" src="../assets/img/elements/13.jpg" alt="Card image cap" />
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">
-                        This is a longer card with supporting text below as a natural lead-in to additional content.
-                        This content is a little bit longer.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card h-100">
-                    <img class="card-img-top" src="../assets/img/elements/4.jpg" alt="Card image cap" />
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">
-                        This is a longer card with supporting text below as a natural lead-in to additional content.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card h-100">
-                    <img class="card-img-top" src="../assets/img/elements/18.jpg" alt="Card image cap" />
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">
-                        This is a longer card with supporting text below as a natural lead-in to additional content.
-                        This content is a little bit longer.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card h-100">
-                    <img class="card-img-top" src="../assets/img/elements/19.jpg" alt="Card image cap" />
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">
-                        This is a longer card with supporting text below as a natural lead-in to additional content.
-                        This content is a little bit longer.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card h-100">
-                    <img class="card-img-top" src="../assets/img/elements/20.jpg" alt="Card image cap" />
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">
-                        This is a longer card with supporting text below as a natural lead-in to additional content.
-                        This content is a little bit longer.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
 
               <!--/ Card layout -->
             </div>

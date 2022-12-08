@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  include '../config.php';
+
+?>
+
+
 <!DOCTYPE html>
 
 <html
@@ -74,7 +81,7 @@
 
           <ul class="menu-inner py-1">
             <li class="menu-item ">
-                <a href="../dashboard.html" class="menu-link">
+                <a href="../dashboard.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
                 </a>
@@ -82,7 +89,7 @@
             
             <!-- Costumer -->
             <li class="menu-item">
-                <a href="../costumer/index.html" class="menu-link">
+                <a href="../costumer/index.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-user-plus"></i>
                 <div data-i18n="Analytics">Costumer</div>
                 </a>
@@ -90,7 +97,7 @@
 
             <!-- Order -->
             <li class="menu-item">
-                <a href="../order/index.html" class="menu-link">
+                <a href="../order/index.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-cart-alt"></i>
                 <div data-i18n="Analytics">Order</div>
                 </a>
@@ -98,7 +105,7 @@
 
             <!-- Service -->
             <li class="menu-item">
-                <a href="../service/index.html" class="menu-link">
+                <a href="../service/index.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-package"></i>
                 <div data-i18n="Analytics">Service</div>
                 </a>
@@ -106,7 +113,7 @@
 
             <!-- List Admin -->
             <li class="menu-item active">
-                <a href="../admin/index.html" class="menu-link ">
+                <a href="../admin/index.php" class="menu-link ">
                 <i class="menu-icon tf-icons bx bxs-user-detail"></i>
                 <div data-i18n="Analytics">List Admin</div>
                 </a>
@@ -114,7 +121,7 @@
             
             <!-- Logout -->
             <li class="menu-item">
-                <a href="../login.html" class="menu-link">
+                <a href="../login.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-log-out-circle"></i>
                 <div data-i18n="Analytics">Logout</div>
                 </a>
@@ -184,7 +191,7 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="../login.html">
+                      <a class="dropdown-item" href="../login.php">
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Log Out</span>
                       </a>
@@ -202,7 +209,7 @@
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Edit /</span> Edit ID :</h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Edit /</span> Edit ID : <?= $_GET['id']; ?></h4>
 
               <!-- Basic Layout -->
               <div class="row">
@@ -213,22 +220,32 @@
                       <!-- <small class="text-muted float-end">Default label</small> -->
                     </div>
                     <div class="card-body">
-                      <form>
-                        <div class="mb-3">
-                          <label class="form-label" for="basic-default-fullname">Nama Customer</label>
-                          <input type="text" class="form-control" id="basic-default-fullname" placeholder="" />
+                      <?php 
+                        $no = 1;
+                        $id = $_GET['id'];
+                        $query = mysqli_query($config, "SELECT * FROM users WHERE ID=$id");
+                        while($data = mysqli_fetch_array($query)) {
+                      ?>
+                      <form method="POST" action="update.php">
+                      <div class="mb-3">
+                          <label class="form-label" for="id">Nama Admin</label>
+                          <input type="hidden" class="form-control" id="id" name="id" value="<?= $data['id']; ?>" placeholder="" required/>
+                          <input type="text" class="form-control" id="name" name="name" value="<?= $data['name']; ?>" placeholder="" required/>
                         </div>
                         <div class="mb-3">
-                          <label class="form-label" for="basic-default-fullname">Username</label>
-                          <input type="text" class="form-control" id="basic-default-fullname" placeholder="" />
+                          <label class="form-label" for="username">Username</label>
+                          <input type="text" class="form-control" id="username" name="username" value="<?= $data['username']; ?>" placeholder="" required/>
                         </div>
                         <div class="mb-3">
-                          <label class="form-label" for="basic-default-fullname">No HP</label>
-                          <input type="text" class="form-control" id="basic-default-fullname" placeholder="" />
+                          <label class="form-label" for="phone_number">No HP</label>
+                          <input type="text" class="form-control" id="phone_number" name="phone_number" value="<?= $data['phone_number']; ?>" placeholder="" required/>
                         </div>
                         <button type="submit" class="btn btn-primary">Simpan</button>
-                        <a href="index.html" class="btn btn-secondary">Kembali</a>
+                        <a href="index.php" class="btn btn-secondary">Kembali</a>
                       </form>
+                      <?php
+                        }
+                      ?>
                     </div>
                   </div>
                 </div>

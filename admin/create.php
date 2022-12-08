@@ -213,26 +213,26 @@
                       <!-- <small class="text-muted float-end">Default label</small> -->
                     </div>
                     <div class="card-body">
-                      <form>
+                      <form method="POST" action="store.php">
                         <div class="mb-3">
-                          <label class="form-label" for="basic-default-fullname">Nama Admin</label>
-                          <input type="text" class="form-control" id="basic-default-fullname" placeholder="" />
+                          <label class="form-label" for="name">Nama Admin</label>
+                          <input type="text" class="form-control" id="name" name="name" placeholder="" required/>
                         </div>
                         <div class="mb-3">
-                          <label class="form-label" for="basic-default-fullname">Username</label>
-                          <input type="text" class="form-control" id="basic-default-fullname" placeholder="" />
+                          <label class="form-label" for="username">Username</label>
+                          <input type="text" class="form-control" id="username" name="username" placeholder="" required/>
                         </div>
                         <div class="mb-3">
-                          <label class="form-label" for="basic-default-fullname">No HP</label>
-                          <input type="email" class="form-control" id="basic-default-fullname" placeholder="" />
+                          <label class="form-label" for="phone_number">No HP</label>
+                          <input type="email" class="form-control" id="phone_number" name="phone_number" placeholder="" required/>
                         </div>
                         <div class="mb-3">
-                          <label class="form-label" for="basic-default-fullname">Password</label>
-                          <input type="password" class="form-control" id="basic-default-fullname" placeholder="" />
+                          <label class="form-label" for="password">Password</label>
+                          <input type="password" class="form-control" id="password" name="password" placeholder=""  required/>
                         </div>
                         <div class="mb-3">
-                          <label class="form-label" for="basic-default-fullname">Konfirmasi Password</label>
-                          <input type="password" class="form-control" id="basic-default-fullname" placeholder="" />
+                          <label class="form-label" for="confpassword">Konfirmasi Password</label>
+                          <input type="password" class="form-control" id="confpassword" name="confpassword" placeholder="" required/>
                         </div>
                         <button type="submit" class="btn btn-primary">Simpan</button>
                         <a href="index.html" class="btn btn-secondary">Kembali</a>

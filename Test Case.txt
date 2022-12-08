@@ -11,9 +11,49 @@ INSERT INTO costumers VALUES
     ('9','Carla Andriani','085341991263','carlaandriani@gmail.com','jalan dahlia gang jati 24B sukajadi','2022-12-09'),
     ('10','Harimurti Suryono','085341998907','harimurtisuryono@gmail.com','Cempaka Mas A/10','2022-12-10');
 
-INSERT INTO costumers VALUES
-    ('1','Ahmad Afrisal','085341995516','mujursihotang@gmail.com','Jl Perumnas No 4','2022-12-01'),
-    ('2','Sadina Hasanah','085240591592','sadinahasanah@gmail.com','Rt. 04/01 Guyangan Bangsri ','2022-12-02'),
-    ('3','Kajen Damanik','088293256300','kajendamanik@gmail.com','Bintang Alam Blok F no 14 B','2022-12-03'),
-    ('4','Ratna Suartini','085157856224','ratnasuartini@gmail.com','Jl. Surya Madya Kav A7','2022-12-04'),
-    ('5','Harimurti Suryono','085341998907','harimurtisuryono@gmail.com','Cempaka Mas A/10','2022-12-10');
+INSERT INTO users VALUES
+    ('1','Merry Wulandari','merryws','081340281523','@merryws1','SUPERADMIN'),
+    ('2','Ahmad Afrisal','aisal','085341998907','@aisal0','ADMIN'),
+    ('3','Fajar Hidayat','lumine','085341991263','@lumine0','ADMIN'),
+    ('4','Nurul Muflikha','mikha','08534199668','@mikha0','ADMIN'),
+    ('5','Wajida','wajida','085251491760','@wajida0','ADMIN');
+
+INSERT INTO service VALUES
+    ('1','LAUNDRY REGULER DELIVERY','5000','Layanan 24 Jam Selesai, Pakaian Sudah disetrika, One Machine One Customer','PAKAIAN'),
+    ('2','LAUNDRY EXPRESS 6 JAM','10000','Layanan 24 Jam Selesai, Pakaian Sudah disetrika, One Machine One Customer','PAKAIAN'),
+    ('3','LAUNDRY EXPRESS 3 JAM','15000','Layanan 24 Jam Selesai, Pakaian Sudah disetrika, One Machine One Customer','PAKAIAN'),
+    ('4','LAUNDRY REGULER DELIVERY','5000','Layanan 24 Jam Selesai, Pakaian Sudah disetrika, One Machine One Customer','SELIMUT'),
+    ('5','LAUNDRY REGULER DELIVERY','5000','Layanan 24 Jam Selesai, Pakaian Sudah disetrika, One Machine One Customer','SELIMUT'),
+    ('6','LAUNDRY REGULER DELIVERY','5000','Layanan 24 Jam Selesai, Pakaian Sudah disetrika, One Machine One Customer','SELIMUT'),
+    ('7','LAUNDRY REGULER DELIVERY','5000','Layanan 24 Jam Selesai, Pakaian Sudah disetrika, One Machine One Customer','SPREI'),
+    ('8','LAUNDRY REGULER DELIVERY','5000','Layanan 24 Jam Selesai, Pakaian Sudah disetrika, One Machine One Customer','SPREI'),
+    ('9','LAUNDRY REGULER DELIVERY','5000','Layanan 24 Jam Selesai, Pakaian Sudah disetrika, One Machine One Customer','SPREI');
+    
+
+5000/KG
+
+Layanan 6 Jam Selesai
+Pakaian Sudah disetrika
+One Machine One Customer
+10000/KG
+
+Layanan 3 Jam Selesai
+Pakaian Sudah disetrika
+One Machine One Customer
+15000/KG
+
+ID
+NAME
+PRICE
+DESCRIPTION
+CATEGORY 
+
+
+ID
+COSTUMUER_ID
+ADMIN_ID
+TRANSACTION_DATE
+STATUS 'PROSES','MASUK','KELUAR'
+BERAT
+TOTAL
+METHOD_PAYMENT 'BAYAR DIAWAL','BAYAR NANTI'
