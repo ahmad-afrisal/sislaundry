@@ -188,7 +188,7 @@ require '../function.php';
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="../login.html">
+                      <a class="dropdown-item" href="../login.php">
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Log Out</span>
                       </a>
@@ -240,7 +240,7 @@ require '../function.php';
                           <input type="password" class="form-control" id="confpassword" name="confpassword" placeholder="" required/>
                         </div>
                         <button type="submit" class="btn btn-primary">Simpan</button>
-                        <a href="index.html" class="btn btn-secondary">Kembali</a>
+                        <a href="index.php" class="btn btn-secondary">Kembali</a>
                       </form>
 
                     </div>
