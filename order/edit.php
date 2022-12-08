@@ -1,3 +1,8 @@
+<?php
+  session_start();
+  include '../config.php';
+?>
+
 <!DOCTYPE html>
 <html
   lang="en"
@@ -211,52 +216,27 @@
                       <!-- <small class="text-muted float-end">Default label</small> -->
                     </div>
                     <div class="card-body">
-                      <form>
+                    <?php 
+                      $no = 1; 
+                      $id = $_GET['id'];
+                      $query = mysqli_query($config, "SELECT * FROM transactions WHERE transactions_id=$id");
+                      while($data = mysqli_fetch_array($query)) {
+                    ?>
+                      <form method="POST" action="update.php">
                         <div class="mb-3">
-                          <label class="form-label" for="basic-default-fullname">Nama Customer</label>
-                          <input
-                          class="form-control"
-                          list="datalistOptions"
-                          id="exampleDataList"
-                          placeholder="Type to search..."
-                        />
-                        <datalist id="datalistOptions">
-                          <option value="Ahmad Afrisal"></option>
-                          <option value="Mikha"></option>
-                          <option value="Wajida"></option>
-                          <option value="Fajar Hidayat"></option>
-                          <option value="Merry"></option>
-                        </datalist>
-                        </div>
-                        <div class="mb-3">
-                          <label for="exampleFormControlSelect1" class="form-label">Service List</label>
-                          <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
-                            <option selected>Pilih Service</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                          </select>
-                        </div>
-                        <!-- <div class="mb-3">
-                          <label class="form-label" for="basic-default-company">Tanggal Masuk</label>
-                          <input type="datetime" class="form-control" id="basic-default-company" placeholder="" />
-                        </div> -->
-                        <div class="mb-3">
-                          <label class="form-label" for="basic-default-company">Berat (Kg)</label>
-                          <input type="text" class="form-control" id="basic-default-company" placeholder="" />
-                        </div>
-                        <div class="mb-3">
-                          <label for="exampleFormControlSelect1" class="form-label">Status</label>
-                          <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
-                            <option selected readonly>Pilih Status</option>
-                            <option value="masuk">masuk</option>
-                            <option value="proses">proses</option>
-                            <option value="keluar">keluar</option>
+                          <label for="status" class="form-label">Status</label>
+                          <select class="form-select" id="status" name="status" aria-label="Default select example" required>
+
+                            <option value="<?= $data['status']; ?>" >MASUK</option>
+                            <option value="" disabled>--------------</option>
+                            <option value="MASUK">MASUK</option>
+                            <option value="PROSES">PROSES</option>
+                            <option value="KELUAR">KELUAR</option>
                           </select>
                         </div>
                         <div class="mb-3">
-                          <label class="form-label" for="basic-default-company">Total Bayar</label>
-                          <input type="text" class="form-control" id="basic-default-company" placeholder="" />
+                          <label class="form-label" for="total" >Total Bayar</label>
+                          <input type="text" class="form-control" id="total" name="harga" value="<?= $data['total']; ?>" onkeyup="OnChange(this.value)" onKeyPress="return isNumberKey(event)" disabled placeholder="" />
                         </div>
                         <div class="mb-3">
                           <label class="form-label d-block" for="basic-default-company">Pembayaran</label>
@@ -264,34 +244,40 @@
                             <input
                               class="form-check-input"
                               type="radio"
-                              name="inlineRadioOptions"
-                              id="inlineRadio1"
-                              value="option1"
+                              name="payment_method"
+                              id="payment_method"
+                              value="BAYAR DIAWAL"
+                              <?php echo $data['payment_method'] === 'BAYAR DIAWAL' ? 'checked': '' ?>
                             />
-                            <label class="form-check-label" for="inlineRadio1">Bayar Diawal</label>
+                            <label class="form-check-label" for="method_payment">Bayar Diawal</label>
                           </div>
                           <div class="form-check form-check-inline">
                             <input
                               class="form-check-input"
                               type="radio"
-                              name="inlineRadioOptions"
+                              name="method_payment"
                               id="inlineRadio2"
-                              value="option2"
+                              value="BAYAR NANTI"
+                              <?php echo $data['payment_method'] === 'BAYAR NANTI' ? 'checked': '' ?>
                             />
                             <label class="form-check-label" for="inlineRadio2">Bayar Nanti</label>
                           </div>
                         </div>
                         <div class="mb-3">
-                          <label class="form-label" for="basic-default-company">Nominal Bayar</label>
-                          <input type="text" class="form-control" id="basic-default-company" placeholder="" />
+                          <label class="form-label" for="nominalBayar">Nominal Bayar</label>
+                          <input type="text" class="form-control" id="nominalBayar" onkeyup="OnChange(this.value)" onKeyPress="return isNumberKey(event)" placeholder="" />
                         </div>
                         <div class="mb-3">
-                          <label class="form-label" for="basic-default-company">Kembalian</label>
-                          <input type="text" class="form-control" id="basic-default-company" placeholder="" disabled/>
+                          <label class="form-label" for="txtDisplay">Kembalian</label>
+                          <input type="text" class="form-control" id="txtDisplay" value="" placeholder="" disabled/>
                         </div>
                         <button type="submit" class="btn btn-primary">Simpan</button>
                         <a href="index.html" class="btn btn-secondary">Kembali</a>
                       </form>
+                      <?php
+                      }
+                      ?>
+
                     </div>
                   </div>
                 </div>
@@ -324,25 +310,34 @@
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
-    <script src="assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="assets/vendor/libs/popper/popper.js"></script>
-    <script src="assets/vendor/js/bootstrap.js"></script>
-    <script src="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="../assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="../assets/vendor/libs/popper/popper.js"></script>
+    <script src="../assets/vendor/js/bootstrap.js"></script>
+    <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
-    <script src="assets/vendor/js/menu.js"></script>
+    <script src="../assets/vendor/js/menu.js"></script>
     <!-- endbuild -->
 
     <!-- Vendors JS -->
-    <script src="assets/vendor/libs/apex-charts/apexcharts.js"></script>
+    <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
 
     <!-- Main JS -->
-    <script src="assets/js/main.js"></script>
+    <script src="../assets/js/main.js"></script>
 
     <!-- Page JS -->
-    <script src="assets/js/dashboards-analytics.js"></script>
+    <script src="../assets/js/dashboards-analytics.js"></script>
+    <script type="text/javascript" language="Javascript">
+      hargasatuan = document.formD.harga.value;
+      document.formD.txtDisplay.value = hargasatuan;
+      jumlah = document.formD.jmlpsn.value;
+      document.formD.txtDisplay.value = jumlah;
+      function OnChange(value){
+        hargasatuan = document.formD.harga.value;
+        jumlah = document.formD.jmlpsn.value;
+        total = hargasatuan * jumlah;
+        document.formD.txtDisplay.value = total;
+      }
+    </script>
 
-
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
   </body>
 </html>
