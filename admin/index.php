@@ -64,7 +64,7 @@
         <!-- Menu -->
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
-            <a href="index.html" class="app-brand-link">
+            <a href="index.php" class="app-brand-link">
               <span class="app-brand-text demo menu-text fw-bolder ms-2">SISlaundry</span>
             </a>
 
@@ -187,7 +187,7 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="../login.html">
+                      <a class="dropdown-item" href="../login.php">
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Log Out</span>
                       </a>
@@ -214,7 +214,7 @@
                   <h5 class="mb-0">List Admin</h5>
                   <div class="d-grid gap-2 d-md-block float-end">
                     <button class="btn btn-outline-primary" type="button">Export</button>
-                    <a href="create.html" class="btn btn-primary" >Add New Admin</a>
+                    <a href="create.php" class="btn btn-primary" >Add New Admin</a>
                   </div>
                 </div>
                     <div class="card-body demo-vertical-spacing demo-only-element">
