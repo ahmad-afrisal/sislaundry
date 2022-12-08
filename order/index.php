@@ -286,7 +286,9 @@
                           <a href="" class="btn rounded-pill btn-icon btn-success">
                             <span class="tf-icons bx bxl-whatsapp"></span>
                           </a>
-                          <a href="https://api.whatsapp.com/send?phone=<?= $data['phone_number']; ?>&text=Halo%20*<?= $data['name']; ?>*%20Pendaftaran%20pada%20pelatihan20telah%20*Disetujui*,%20Silahkan%20hadir%20tepat%20waktu%20yaaah.%0A%0ATerima%20Kasih%0Abangk.id" target="_blank" class="btn rounded-pill btn-icon btn-info">
+                          <a href="https://wa.me/+6285156090250?text=
+                          Hai Isal Cucian Laundry anda sudah selesai, silahkan ambil di Wash Tank T - 0102 
+                          %0A================%0ANo. nota : AU54G2.041222.051%0AStatus : Belum dibayar%0ASisa Tagihan : Rp. 12.500,-" target="_blank" class="btn rounded-pill btn-icon btn-info">
                             <span class="tf-icons bx bxl-whatsapp"></span>
                           </a>
                         </td>
