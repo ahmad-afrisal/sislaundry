@@ -256,8 +256,8 @@
                                                         JOIN service ON transactions.service_id=service.id
                                                         JOIN costumers ON transactions.costumers_id=costumers.id");
 
-                        $no_wa = $data['phone_number'];
                         while($data = mysqli_fetch_array($query)) {
+                        $no_wa = substr($data['phone_number'],1);
                           
 
                         
@@ -318,7 +318,7 @@
                             %0Ahttps://app.1010dry.id/nota/638c02597a72c7fdd3653737" target="_blank" class="btn rounded-pill btn-icon btn-success">
                             <span class="tf-icons bx bxl-whatsapp"></span>
                           </a>
-                          <a href="https://wa.me/+6285156090250?text=
+                          <a href="https://wa.me/+62<?= $no_wa; ?>?text=
                           Hai Isal Cucian Laundry anda sudah selesai, silahkan ambil di Wash Tank T - 0102 
                           %0A================%0ANo. nota : AU54G2.041222.051%0AStatus : Belum dibayar%0ASisa Tagihan : Rp. 12.500,-" target="_blank" class="btn rounded-pill btn-icon btn-info">
                             <span class="tf-icons bx bxl-whatsapp"></span>
