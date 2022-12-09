@@ -292,13 +292,13 @@
                           ?>
                         </td>
                         <td>
-                          <a href="https://wa.me/+6285156090250?text=Wash Tank T - 0102
-                            Jl. Perumnas Blok F1A, Kel. Catur Tunggal, Kec. Depok, Kab. Sleman, Yogyakarta%0ANo. HP 0831-1988-7175 
+                          <a href="https://wa.me/+62<?= $no_wa; ?>?text=Wash D'vins Laundry 
+                            Jalan candi gebang III Yogyakarta%0ANo. HP 081228128300
                             %0A====================%0A
 
-                            %0ATgl  : 04/12/2022 - 09:13 
-                            %0ANama : isal  
-                            %0ANo   : AU54G2.041222.051 %0AKasir: Novia %0A
+                            %0ATanggal Transaksi  : <?= $data['date_transaction']; ?> 
+                            %0ANama : <?= $data['name']; ?>
+                            %0ANo.nota : SL.<?= $data['id']; ?>%0AKasir: <?= $data['users_id']; ?>%0A
 
                             %0A==================== %0A
                             %0ATipe Laundry  : KG'an (REGULER)
@@ -326,8 +326,8 @@
                             <span class="tf-icons bx bxl-whatsapp"></span>
                           </a>
                           <a href="https://wa.me/+62<?= $no_wa; ?>?text=
-                          Hai <?= $data['name']; ?> Cucian Laundry anda sudah selesai, silahkan ambil di D'vinz Laundry 
-                          %0A================%0ANo. nota : SL.<?= $data['id']; ?>%0AStatus : <?= $status_pembayaran; ?>%0AHarga : Rp. <?= $data['total']; ?>" target="_blank" class="btn rounded-pill btn-icon btn-info">
+                          Hai <?= $data['name']; ?> Cucian Laundry anda sudah selesai, silahkan ambil di D'vins Laundry 
+                          %0A================%0ANo.nota : SL.<?= $data['id']; ?>%0AStatus : <?= $status_pembayaran; ?>%0AHarga : Rp. <?= $data['total']; ?>" target="_blank" class="btn rounded-pill btn-icon btn-info">
                             <span class="tf-icons bx bxl-whatsapp"></span>
                           </a>
                         </td>
