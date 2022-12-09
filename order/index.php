@@ -255,7 +255,16 @@
                                                         JOIN users ON transactions.users_id=users.id
                                                         JOIN service ON transactions.service_id=service.id
                                                         JOIN costumers ON transactions.costumers_id=costumers.id");
+
                         while($data = mysqli_fetch_array($query)) {
+                        $no_wa = substr($data['phone_number'],1);
+                        $status_pembayaran='';
+                        if($data['payment_method']== "BAYAR DIAWAL"){
+                          $status_pembayaran="Sudah Bayar";
+                        }
+                        else{
+                          $status_pembayaran="Belum Dibayar";
+                        }
                           
 
                         
@@ -283,10 +292,42 @@
                           ?>
                         </td>
                         <td>
-                          <a href="" class="btn rounded-pill btn-icon btn-success">
+                          <a href="https://wa.me/+6285156090250?text=Wash Tank T - 0102
+                            Jl. Perumnas Blok F1A, Kel. Catur Tunggal, Kec. Depok, Kab. Sleman, Yogyakarta%0ANo. HP 0831-1988-7175 
+                            %0A====================%0A
+
+                            %0ATgl  : 04/12/2022 - 09:13 
+                            %0ANama : isal  
+                            %0ANo   : AU54G2.041222.051 %0AKasir: Novia %0A
+
+                            %0A==================== %0A
+                            %0ATipe Laundry  : KG'an (REGULER)
+                            %0ATipe Layanan  : Cuci Komplit
+                            %0AJenis Pewangi : Fress
+                            %0ABerat (kg)    : 2.5
+                            %0AHarga /kg     : Rp. 5.000,-
+                            %0ASubtotal      : Rp. 12.500,-
+                            %0ADiskon        : Rp. 0,-
+                            %0ABayar         : Rp. 12.500,-  %0A
+
+                            %0A==================== %0APerkiraan Selesai : %0A06/12/2022 -09:13 %0A
+                            %0A==================== %0AStatus   : Belum lunas %0ADilunasi : - %0ADiambil  : - %0A
+                            %0A==================== %0A
+                            %0AKETENTUAN : 
+                            %0A1. Pakaian Luntur bukan menjadi tanggung jawab laundry.
+                            %0A2. Komplain pakaian kami layani 1x24 jam, sejak pakaian diambil.
+                            %0A3. Pengambilan laundry wajib menggunakan nota asli.
+                            %0A4. Laundry yang tidak diambil jangka waktu 1 bulan, jika terjadi kerusakan menjadi tanggung jawab pemilik.
+                            Terimakasih atas kunjungan anda %0A
+                            
+                            %0A==================== %0A
+                            %0AKlik link dibawah ini untuk melihat nota digital
+                            %0Ahttps://app.1010dry.id/nota/638c02597a72c7fdd3653737" target="_blank" class="btn rounded-pill btn-icon btn-success">
                             <span class="tf-icons bx bxl-whatsapp"></span>
                           </a>
-                          <a href="https://api.whatsapp.com/send?phone=<?= $data['phone_number']; ?>&text=Halo%20*<?= $data['name']; ?>*%20Pendaftaran%20pada%20pelatihan20telah%20*Disetujui*,%20Silahkan%20hadir%20tepat%20waktu%20yaaah.%0A%0ATerima%20Kasih%0Abangk.id" target="_blank" class="btn rounded-pill btn-icon btn-info">
+                          <a href="https://wa.me/+62<?= $no_wa; ?>?text=
+                          Hai <?= $data['name']; ?> Cucian Laundry anda sudah selesai, silahkan ambil di D'vinz Laundry 
+                          %0A================%0ANo. nota : SL.<?= $data['id']; ?>%0AStatus : <?= $status_pembayaran; ?>%0AHarga : Rp. <?= $data['total']; ?>" target="_blank" class="btn rounded-pill btn-icon btn-info">
                             <span class="tf-icons bx bxl-whatsapp"></span>
                           </a>
                         </td>
