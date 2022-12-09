@@ -283,7 +283,37 @@
                           ?>
                         </td>
                         <td>
-                          <a href="" class="btn rounded-pill btn-icon btn-success">
+                          <a href="https://wa.me/+6285156090250?text=Wash Tank T - 0102
+                            Jl. Perumnas Blok F1A, Kel. Catur Tunggal, Kec. Depok, Kab. Sleman, Yogyakarta%0ANo. HP 0831-1988-7175 
+                            %0A====================%0A
+
+                            %0ATgl  : 04/12/2022 - 09:13 
+                            %0ANama : isal  
+                            %0ANo   : AU54G2.041222.051 %0AKasir: Novia %0A
+
+                            %0A==================== %0A
+                            %0ATipe Laundry  : KG'an (REGULER)
+                            %0ATipe Layanan  : Cuci Komplit
+                            %0AJenis Pewangi : Fress
+                            %0ABerat (kg)    : 2.5
+                            %0AHarga /kg     : Rp. 5.000,-
+                            %0ASubtotal      : Rp. 12.500,-
+                            %0ADiskon        : Rp. 0,-
+                            %0ABayar         : Rp. 12.500,-  %0A
+
+                            %0A==================== %0APerkiraan Selesai : %0A06/12/2022 -09:13 %0A
+                            %0A==================== %0AStatus   : Belum lunas %0ADilunasi : - %0ADiambil  : - %0A
+                            %0A==================== %0A
+                            %0AKETENTUAN : 
+                            %0A1. Pakaian Luntur bukan menjadi tanggung jawab laundry.
+                            %0A2. Komplain pakaian kami layani 1x24 jam, sejak pakaian diambil.
+                            %0A3. Pengambilan laundry wajib menggunakan nota asli.
+                            %0A4. Laundry yang tidak diambil jangka waktu 1 bulan, jika terjadi kerusakan menjadi tanggung jawab pemilik.
+                            Terimakasih atas kunjungan anda %0A
+                            
+                            %0A==================== %0A
+                            %0AKlik link dibawah ini untuk melihat nota digital
+                            %0Ahttps://app.1010dry.id/nota/638c02597a72c7fdd3653737" target="_blank" class="btn rounded-pill btn-icon btn-success">
                             <span class="tf-icons bx bxl-whatsapp"></span>
                           </a>
                           <a href="https://wa.me/+6285156090250?text=
