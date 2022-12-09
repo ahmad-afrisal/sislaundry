@@ -255,6 +255,8 @@
                                                         JOIN users ON transactions.users_id=users.id
                                                         JOIN service ON transactions.service_id=service.id
                                                         JOIN costumers ON transactions.costumers_id=costumers.id");
+
+                        $no_wa = $data['phone_number'];
                         while($data = mysqli_fetch_array($query)) {
                           
 
