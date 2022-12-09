@@ -107,3 +107,13 @@ Layanan 1 Hari Selesai
 BONEKKA KECIL
 Layanan 1 Hari Selesai
 5000/KG
+
+
+<div class="mb-3">
+                          <label class="form-label" for="total" >Total Bayar</label>
+                          <input type="text" class="form-control" id="total" name="jmlpsn" onkeyup="OnChange(this.value)" onKeyPress="return isNumberKey(event)"  placeholder="" />
+                        </div>
+                        <div class="mb-3">
+                          <label class="form-label" for="nominalBayar">Nominal Bayar</label>
+                          <input type="text" class="form-control" id="nominalBayar" name="harga" onkeyup="OnChange(this.value)" onKeyPress="return isNumberKey(event)" placeholder="" />
+                        </div>

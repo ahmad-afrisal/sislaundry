@@ -205,7 +205,7 @@
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Order /</span> Edit Order ID : </h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Order /</span> Edit Order ID : <?= $_GET['transactions_id']; ?></h4>
 
               <!-- Basic Layout -->
               <div class="row">
@@ -218,15 +218,15 @@
                     <div class="card-body">
                     <?php 
                       $no = 1; 
-                      $id = $_GET['id'];
+                      $id = $_GET['transactions_id'];
                       $query = mysqli_query($config, "SELECT * FROM transactions WHERE transactions_id=$id");
                       while($data = mysqli_fetch_array($query)) {
                     ?>
-                      <form method="POST" action="update.php">
+                      <form method="POST" action="update.php" id="formD" name="formD">
                         <div class="mb-3">
                           <label for="status" class="form-label">Status</label>
+                          <input type="hidden" class="form-control" id="id" name="id" value="<?= $data['transactions_id']; ?>" placeholder="" />
                           <select class="form-select" id="status" name="status" aria-label="Default select example" required>
-
                             <option value="<?= $data['status']; ?>" >MASUK</option>
                             <option value="" disabled>--------------</option>
                             <option value="MASUK">MASUK</option>
@@ -249,13 +249,13 @@
                               value="BAYAR DIAWAL"
                               <?php echo $data['payment_method'] === 'BAYAR DIAWAL' ? 'checked': '' ?>
                             />
-                            <label class="form-check-label" for="method_payment">Bayar Diawal</label>
+                            <label class="form-check-label" for="method_payment">Bayar</label>
                           </div>
                           <div class="form-check form-check-inline">
                             <input
                               class="form-check-input"
                               type="radio"
-                              name="method_payment"
+                              name="payment_method"
                               id="inlineRadio2"
                               value="BAYAR NANTI"
                               <?php echo $data['payment_method'] === 'BAYAR NANTI' ? 'checked': '' ?>
@@ -265,14 +265,14 @@
                         </div>
                         <div class="mb-3">
                           <label class="form-label" for="nominalBayar">Nominal Bayar</label>
-                          <input type="text" class="form-control" id="nominalBayar" onkeyup="OnChange(this.value)" onKeyPress="return isNumberKey(event)" placeholder="" />
+                          <input type="text" class="form-control" id="jmppsn" name="jmlpsn" onkeyup="OnChange(this.value)" onKeyPress="return isNumberKey(event)" placeholder="" />
                         </div>
                         <div class="mb-3">
                           <label class="form-label" for="txtDisplay">Kembalian</label>
-                          <input type="text" class="form-control" id="txtDisplay" value="" placeholder="" disabled/>
+                          <input type="text" class="form-control" id="txtDisplay" name="txtDisplay" value="" placeholder="" disabled />
                         </div>
                         <button type="submit" class="btn btn-primary">Simpan</button>
-                        <a href="index.html" class="btn btn-secondary">Kembali</a>
+                        <a href="index.php" class="btn btn-secondary">Kembali</a>
                       </form>
                       <?php
                       }
@@ -334,7 +334,7 @@
       function OnChange(value){
         hargasatuan = document.formD.harga.value;
         jumlah = document.formD.jmlpsn.value;
-        total = hargasatuan * jumlah;
+        total = jumlah - hargasatuan ;
         document.formD.txtDisplay.value = total;
       }
     </script>
