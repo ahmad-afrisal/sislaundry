@@ -258,6 +258,13 @@
 
                         while($data = mysqli_fetch_array($query)) {
                         $no_wa = substr($data['phone_number'],1);
+                        $status_pembayaran='';
+                        if($data['payment_method']== "BAYAR DIAWAL"){
+                          $status_pembayaran="Sudah Bayar";
+                        }
+                        else{
+                          $status_pembayaran="Belum Dibayar";
+                        }
                           
 
                         
@@ -319,8 +326,8 @@
                             <span class="tf-icons bx bxl-whatsapp"></span>
                           </a>
                           <a href="https://wa.me/+62<?= $no_wa; ?>?text=
-                          Hai Isal Cucian Laundry anda sudah selesai, silahkan ambil di Wash Tank T - 0102 
-                          %0A================%0ANo. nota : AU54G2.041222.051%0AStatus : Belum dibayar%0ASisa Tagihan : Rp. 12.500,-" target="_blank" class="btn rounded-pill btn-icon btn-info">
+                          Hai <?= $data['name']; ?> Cucian Laundry anda sudah selesai, silahkan ambil di D'vinz Laundry 
+                          %0A================%0ANo. nota : SL.<?= $data['id']; ?>%0AStatus : <?= $status_pembayaran; ?>%0AHarga : Rp. <?= $data['total']; ?>" target="_blank" class="btn rounded-pill btn-icon btn-info">
                             <span class="tf-icons bx bxl-whatsapp"></span>
                           </a>
                         </td>
