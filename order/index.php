@@ -302,11 +302,11 @@
 
                             %0A==================== %0A
                             %0ATipe Laundry  : KG'an (REGULER)
-                            %0ATipe Layanan  : Cuci Komplit
+                            %0ATipe Layanan  : <?= $data['description']; ?>
                             %0AJenis Pewangi : Fress
-                            %0ABerat (kg)    : 2.5
-                            %0AHarga /kg     : Rp. 5.000,-
-                            %0ASubtotal      : Rp. 12.500,-
+                            %0ABerat (kg)    :<?= $data['weight']; ?>
+                            %0AHarga /kg     : Rp. <?= $data['price']; ?>,-
+                            %0ASubtotal      : Rp. <?= $data['total']; ?>,-
                             %0ADiskon        : Rp. 0,-
                             %0ABayar         : Rp. 12.500,-  %0A
 
