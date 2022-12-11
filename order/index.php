@@ -265,8 +265,6 @@
                         else{
                           $status_pembayaran="Belum Dibayar";
                         }
-                          
-
                         
                       ?>
                       <tr>
@@ -307,11 +305,9 @@
                             %0ABerat (kg)    :<?= $data['weight']; ?>
                             %0AHarga /kg     : Rp. <?= $data['price']; ?>,-
                             %0ASubtotal      : Rp. <?= $data['total']; ?>,-
-                            %0ADiskon        : Rp. 0,-
-                            %0ABayar         : Rp. 12.500,-  %0A
 
                             %0A==================== %0APerkiraan Selesai : %0A06/12/2022 -09:13 %0A
-                            %0A==================== %0AStatus   : <?= $status_pembayaran; ?>%0ADilunasi : - %0ADiambil  : - %0A
+                            %0A==================== %0AStatus   : <?= $status_pembayaran; ?>
                             %0A==================== %0A
                             %0AKETENTUAN : 
                             %0A1. Pakaian Luntur bukan menjadi tanggung jawab laundry.
@@ -322,7 +318,7 @@
                             
                             %0A==================== %0A
                             %0AKlik link dibawah ini untuk melihat nota digital
-                            %0Ahttps://app.1010dry.id/nota/638c02597a72c7fdd3653737" target="_blank" class="btn rounded-pill btn-icon btn-success">
+                            %0Ahttp://sislaundry.test/order/nota.php?transactions_id= <?= $transaction_id; ?>" target="_blank" class="btn rounded-pill btn-icon btn-success">
                             <span class="tf-icons bx bxl-whatsapp"></span>
                           </a>
                           <a href="https://wa.me/+62<?= $no_wa; ?>?text=
