@@ -311,7 +311,7 @@
                             %0ABayar         : Rp. 12.500,-  %0A
 
                             %0A==================== %0APerkiraan Selesai : %0A06/12/2022 -09:13 %0A
-                            %0A==================== %0AStatus   : Belum lunas %0ADilunasi : - %0ADiambil  : - %0A
+                            %0A==================== %0AStatus   : <?= $status_pembayaran; ?>%0ADilunasi : - %0ADiambil  : - %0A
                             %0A==================== %0A
                             %0AKETENTUAN : 
                             %0A1. Pakaian Luntur bukan menjadi tanggung jawab laundry.
