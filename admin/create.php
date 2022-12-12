@@ -1,5 +1,18 @@
 <?php
 require '../function.php';
+if (isset($_POST["register"])) {
+  if (registrasi($_POST) > 0 ) {
+     echo "<sriptt>
+        alert('user naru telah dibuat);
+     
+     </sriptt>";
+    # code...
+  }else {
+    
+    echo mysqli_error($config);
+  }
+  # code...
+}
 ?>
 
 <!DOCTYPE html>
@@ -240,7 +253,7 @@ require '../function.php';
                           <input type="password" class="form-control" id="confpassword" name="confpassword" placeholder="" required/>
                         </div>
                         <button type="submit" class="btn btn-primary">Simpan</button>
-                        <a href="index.php" class="btn btn-secondary">Kembali</a>
+                        <a href="index.html" class="btn btn-secondary">Kembali</a>
                       </form>
 
                     </div>

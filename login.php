@@ -1,4 +1,5 @@
 <?php
+session_start();
 require 'function.php';
 
 if (isset($_POST["login"])) {
@@ -13,6 +14,8 @@ if (isset($_POST["login"])) {
     $row = mysqli_fetch_assoc($result);
     if (password_verify($password,$row["password"])) {
       # code...
+      //sesi
+      $_SESSION["login"] = true;
       header("Location: dashboard.php");
       exit;
     }
@@ -50,6 +53,9 @@ if (isset($_POST["login"])) {
                   <img src="assets/img/icons/brands/logo-login.svg" alt="logo" class="logo" />
                 </div>
                 <p class="login-card-description">Get's Started</p>
+                <?php if(isset($error)) : ?>
+                  <p style="color:red;">username / password salah</p>
+                <?php endif; ?>
                 <form action="" method="post">
                   <div class="form-group">
                     <label for="username" class="sr-only">Username"</label>
