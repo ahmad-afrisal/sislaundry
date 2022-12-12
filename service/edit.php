@@ -228,6 +228,7 @@
                       <form action="update.php" method="POST">
                         <div class="mb-3">
                           <label class="form-label" for="name">Nama Paket</label>
+                          <input type="hidden" class="form-control" id="id" name="id" value="<?= $data['id']?>" placeholder="" required />
                           <input type="text" class="form-control" id="name" name="name" value="<?= $data['name']?>" placeholder="" required />
                         </div>
                         <div class="mb-3">
@@ -240,10 +241,16 @@
                         </div>
                         <div class="mb-3">
                           <label class="form-label" for="basic-default-fullname">Kategori</label>
-                          <input type="text" class="form-control" id="basic-default-fullname" placeholder="" />
+                          <select class="form-select" id="" aria-label="Default select example" name="category" required>
+                            <option value="<?= $data['category']?>"><?= $data['category']?></option>
+                            <option value="">----------------</option>
+                            <option value="PAKAIAN">PAKAIAN</option>
+                            <option value="SEPRAI">SEPRAI</option>
+                            <option value="BONEKA">BONEKA</option>
+                          </select>
                         </div>
                         <button type="submit" class="btn btn-primary">Simpan</button>
-                        <a href="index.html" class="btn btn-secondary">Kembali</a>
+                        <a href="index.php" class="btn btn-secondary">Kembali</a>
                       </form>
                       <?php
                       }

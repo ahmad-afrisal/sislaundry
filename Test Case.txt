@@ -37,10 +37,8 @@ Pakaian Sudah disetrika
 One Machine One Customer
 10000/KG
 
-Layanan 3 Jam Selesai
-Pakaian Sudah disetrika
-One Machine One Customer
-15000/KG
+
+
 
 ID
 NAME
@@ -57,3 +55,65 @@ STATUS 'PROSES','MASUK','KELUAR'
 BERAT
 TOTAL
 METHOD_PAYMENT 'BAYAR DIAWAL','BAYAR NANTI'
+
+-1-
+CUCI KERING 1 HARI
+Layanan 1 Hari Selesai
+Hanya Cuci
+One Machine One Customer
+3000/KG
+
+-2-
+SETRIKA 1 HARI
+Layanan 1 Hari Selesai
+Hanya Setrika
+One Machine One Customer
+4500/KG
+
+-3-
+CUCI + SETRIKA 1 HARI
+Layanan 1 Hari Selesai
+Pakaian Sudah disetrika
+One Machine One Customer
+5500/KG
+
+-4-
+SELIMUT TIPIS
+Layanan 1 Hari Selesai
+10000/KG
+
+-5-
+SELIMUT TEBAL
+Layanan 1 Hari Selesai
+22000/KG
+
+-6-
+BEDCOVER
+Layanan 1 Hari Selesai
+25000/KG
+
+
+-7-
+BONEKA BESAR
+Layanan 1 Hari Selesai
+35000/KG
+
+-8-
+BONEKA SEDANG
+Layanan 1 Hari Selesai
+20000/KG
+
+-9-
+BONEKKA KECIL
+Layanan 1 Hari Selesai
+5000/KG
+
+
+<div class="mb-3">
+                          <label class="form-label" for="total" >Total Bayar</label>
+                          <input type="text" class="form-control" id="total" name="jmlpsn" onkeyup="OnChange(this.value)" onKeyPress="return isNumberKey(event)"  placeholder="" />
+                        </div>
+                        <div class="mb-3">
+                          <label class="form-label" for="nominalBayar">Nominal Bayar</label>
+                          <input type="text" class="form-control" id="nominalBayar" name="harga" onkeyup="OnChange(this.value)" onKeyPress="return isNumberKey(event)" placeholder="" />
+                        </div>

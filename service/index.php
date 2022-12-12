@@ -68,7 +68,7 @@
         <!-- Menu -->
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
-            <a href="index.html" class="app-brand-link">
+            <a href="index.php" class="app-brand-link">
               <span class="app-brand-text demo menu-text fw-bolder ms-2">SISlaundry</span>
             </a>
 
@@ -81,7 +81,7 @@
 
           <ul class="menu-inner py-1">
             <li class="menu-item ">
-                <a href="../dashboard.html" class="menu-link">
+                <a href="../dashboard.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
                 </a>
@@ -89,7 +89,7 @@
             
             <!-- Costumer -->
             <li class="menu-item">
-                <a href="../costumer/index.html" class="menu-link">
+                <a href="../costumer/index.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-user-plus"></i>
                 <div data-i18n="Analytics">Costumer</div>
                 </a>
@@ -97,7 +97,7 @@
 
             <!-- Order -->
             <li class="menu-item">
-                <a href="../order/index.html" class="menu-link">
+                <a href="../order/index.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-cart-alt"></i>
                 <div data-i18n="Analytics">Order</div>
                 </a>
@@ -113,7 +113,7 @@
 
             <!-- List Admin -->
             <li class="menu-item">
-                <a href="../admin/index.html" class="menu-link ">
+                <a href="../admin/index.php" class="menu-link ">
                 <i class="menu-icon tf-icons bx bxs-user-detail"></i>
                 <div data-i18n="Analytics">List Admin</div>
                 </a>
@@ -121,7 +121,7 @@
             
             <!-- Logout -->
             <li class="menu-item">
-                <a href="../login.html" class="menu-link">
+                <a href="../login.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-log-out-circle"></i>
                 <div data-i18n="Analytics">Logout</div>
                 </a>
@@ -191,7 +191,7 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="../login.html">
+                      <a class="dropdown-item" href="../login.php">
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Log Out</span>
                       </a>
@@ -211,8 +211,10 @@
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4">Service List</h4>
-
+              <h4 class="fw-bold pt-3 ">Service List</h4>
+              <div class="d-grid gap-2 mx-auto">
+                <a href="create.php" class="btn btn-primary mb-3">Tambah Service</a>
+              </div>
               <!-- Text alignment -->
               <h5 class="pb-1 mb-4">Pakaian</h5>
               <div class="row mb-5">
@@ -225,9 +227,10 @@
                   <div class="card mb-3">
                     <div class="card-body">
                       <h5 class="card-title"><?= $data['name'];?></h5>
+                      <p class="card-text">Harga : Rp.<?= $data['price'];?></p>
                       <p class="card-text"><?= $data['description'];?></p>
                       <a href="edit.php?id=<?= $data['id']; ?>"" class="btn btn-primary">Edit</a>
-                      <a href="delete.php?id=<?= $data['id']; ?>"" class="btn btn-danger">Delete</a>
+                      <a href="delete.php?id=<?= $data['id']; ?>"" class="btn btn-danger alert_notif">Delete</a>
                     </div>
                   </div>
                 </div>
@@ -249,9 +252,10 @@
                   <div class="card mb-3">
                     <div class="card-body">
                       <h5 class="card-title"><?= $data['name'];?></h5>
+                      <p class="card-text">Harga : Rp.<?= $data['price'];?></p>
                       <p class="card-text"><?= $data['description'];?></p>
                       <a href="edit.php?id=<?= $data['id']; ?>" class="btn btn-primary">Edit</a>
-                      <a href="delete.php?id=<?= $data['id']; ?>" class="btn btn-danger">Delete</a>
+                      <a href="delete.php?id=<?= $data['id']; ?>" class="btn btn-danger alert_notif">Delete</a>
                     </div>
                   </div>
                 </div>
@@ -262,20 +266,21 @@
               <!--/ Text alignment -->
 
               <!-- Text alignment -->
-              <h5 class="pb-1 mb-4">Karpet</h5>
+              <h5 class="pb-1 mb-4">Boneka</h5>
               <div class="row mb-5">
                 <?php 
                   $no = 1;
-                  $query = mysqli_query($config, "SELECT * FROM service WHERE category='KARPET'");
+                  $query = mysqli_query($config, "SELECT * FROM service WHERE category='BONEKA'");
                   while($data = mysqli_fetch_array($query)) {
                 ?>
                 <div class="col-md-6 col-lg-4">
                   <div class="card mb-3">
                     <div class="card-body">
                       <h5 class="card-title"><?= $data['name'];?></h5>
+                      <p class="card-text">Harga : Rp.<?= $data['price'];?></p>
                       <p class="card-text"><?= $data['description'];?></p>
                       <a href="edit.php?id=<?= $data['id']; ?>" class="btn btn-primary">Edit</a>
-                      <a href="delete.php?id=<?= $data['id']; ?>" class="btn btn-danger">Delete</a>
+                      <a href="delete.php?id=<?= $data['id']; ?>" class="btn btn-danger alert_notif">Delete</a>
                     </div>
                   </div>
                 </div>
@@ -314,25 +319,61 @@
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
-    <script src="assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="assets/vendor/libs/popper/popper.js"></script>
-    <script src="assets/vendor/js/bootstrap.js"></script>
-    <script src="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="../assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="../assets/vendor/libs/popper/popper.js"></script>
+    <script src="../assets/vendor/js/bootstrap.js"></script>
+    <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
-    <script src="assets/vendor/js/menu.js"></script>
+    <script src="../assets/vendor/js/menu.js"></script>
     <!-- endbuild -->
 
     <!-- Vendors JS -->
-    <script src="assets/vendor/libs/apex-charts/apexcharts.js"></script>
+    <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
 
     <!-- Main JS -->
-    <script src="assets/js/main.js"></script>
+    <script src="../assets/js/main.js"></script>
 
     <!-- Page JS -->
-    <script src="assets/js/dashboards-analytics.js"></script>
+    <script src="../assets/js/dashboards-analytics.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.7/dist/sweetalert2.all.min.js"></script>
 
 
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
+     <!-- jika ada session sukses maka tampilkan sweet alert dengan pesan yang telah di set
+        di dalam session sukses  -->
+        <?php if(@$_SESSION['sukses']){ ?>
+            <script>
+                Swal.fire({            
+                    icon: 'success',                   
+                    title: 'Sukses',                          
+                    timer: 3000,                                
+                    showConfirmButton: false
+                })
+            </script>
+        <!-- jangan lupa untuk menambahkan unset agar sweet alert tidak muncul lagi saat di refresh -->
+        <?php unset($_SESSION['sukses']); } ?>
+    
+    
+        <!-- di bawah ini adalah script untuk konfirmasi hapus data dengan sweet alert  -->
+        <script>
+            $('.alert_notif').on('click',function(){
+                var getLink = $(this).attr('href');
+                Swal.fire({
+                    title: "Yakin hapus data?",            
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    confirmButtonText: 'Ya',
+                    cancelButtonColor: '#3085d6',
+                    cancelButtonText: "Batal"
+                
+                }).then(result => {
+                    //jika klik ya maka arahkan ke delete.php
+                    if(result.isConfirmed){
+                        window.location.href = getLink
+                    }
+                })
+                return false;
+            });
+        </script>
   </body>
 </html>
