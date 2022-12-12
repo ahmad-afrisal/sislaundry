@@ -20,6 +20,11 @@ function registrasi($data){
         ";
         return false;
     }
+    //enkripsi event
+    $password = password_hash($password,PASSWORD_DEFAULT);
+
+    //insert
+    mysqli_query($config,"INSERT INTO users VALUES('','$namaadmin','$username','$nohp','$password','ADMIN')");
 }
 
 ?>

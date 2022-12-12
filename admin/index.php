@@ -214,7 +214,7 @@
                   <h5 class="mb-0">List Admin</h5>
                   <div class="d-grid gap-2 d-md-block float-end">
                     <button class="btn btn-outline-primary" type="button">Export</button>
-                    <a href="create.html" class="btn btn-primary" >Add New Admin</a>
+                    <a href="create.php" class="btn btn-primary" >Add New Admin</a>
                   </div>
                 </div>
                     <div class="card-body demo-vertical-spacing demo-only-element">
