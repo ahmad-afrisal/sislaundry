@@ -1,11 +1,4 @@
 <?php
-session_start();
-
-if (!isset($_SESSION["login"])) {
-    header("Location: login.php");
-    exit;
-    # code...
-}
 require '../function.php';
 if (isset($_POST["register"])) {
   if (registrasi($_POST) > 0 ) {
@@ -259,8 +252,13 @@ if (isset($_POST["register"])) {
                           <label class="form-label" for="confpassword">Konfirmasi Password</label>
                           <input type="password" class="form-control" id="confpassword" name="confpassword" placeholder="" required/>
                         </div>
-                        <button type="submit" class="btn btn-primary">Simpan</button>
+<<<<<<< HEAD
+                        <button type="submit" name="register" class="btn btn-primary">Simpan</button>
                         <a href="index.html" class="btn btn-secondary">Kembali</a>
+=======
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <a href="index.php" class="btn btn-secondary">Kembali</a>
+>>>>>>> 1ba39f65b8778b16de497f96fe8376237efda3c2
                       </form>
 
                     </div>
