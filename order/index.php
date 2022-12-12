@@ -254,7 +254,7 @@
                         $query = mysqli_query($config, "SELECT * FROM transactions 
                                                         JOIN users ON transactions.users_id=users.id
                                                         JOIN service ON transactions.service_id=service.id
-                                                        JOIN costumers ON transactions.costumers_id=costumers.id");
+                                                        JOIN costumers ON transactions.costumers_id=costumers.id ORDER BY date_transaction DESC");
 
                         while($data = mysqli_fetch_array($query)) {
                         $no_wa = substr($data['phone_number'],1);
@@ -360,13 +360,13 @@
                           ><i class="tf-icon bx bx-chevrons-left"></i
                         ></a>
                       </li>
-                      <li class="page-item">
+                      <li class="page-item active">
                         <a class="page-link" href="javascript:void(0);">1</a>
                       </li>
                       <li class="page-item">
                         <a class="page-link" href="javascript:void(0);">2</a>
                       </li>
-                      <li class="page-item active">
+                      <li class="page-item">
                         <a class="page-link" href="javascript:void(0);">3</a>
                       </li>
                       <li class="page-item">
