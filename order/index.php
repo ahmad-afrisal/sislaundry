@@ -294,7 +294,7 @@
                             Jalan candi gebang III Yogyakarta%0ANo. HP 081228128300
                             %0A====================%0A
 
-                            %0ATanggal Transaksi  : <?= $data['date_transaction']; ?> 
+                            %0ATgl: <?= $data['date_transaction']; ?> 
                             %0ANama : <?= $data['name']; ?>
                             %0ANo.nota : SL.<?= $data['id']; ?>%0AKasir: <?= $data['users_id']; ?>%0A
 
@@ -306,7 +306,7 @@
                             %0AHarga /kg     : Rp. <?= $data['price']; ?>,-
                             %0ASubtotal      : Rp. <?= $data['total']; ?>,-
 
-                            %0A==================== %0APerkiraan Selesai : %0A06/12/2022 -09:13 %0A
+                            %0A==================== %0APerkiraan Selesai : %0A %0A
                             %0A==================== %0AStatus   : <?= $status_pembayaran; ?>
                             %0A==================== %0A
                             %0AKETENTUAN : 
@@ -318,7 +318,7 @@
                             
                             %0A==================== %0A
                             %0AKlik link dibawah ini untuk melihat nota digital
-                            %0Ahttp://sislaundry.test/order/nota.php?transactions_id= <?= $transaction_id; ?>" target="_blank" class="btn rounded-pill btn-icon btn-success">
+                            %0Ahttp://sislaundry.test/order/nota.php <?= $data['transactions_id']; ?>" target="_blank" class="btn rounded-pill btn-icon btn-success">
                             <span class="tf-icons bx bxl-whatsapp"></span>
                           </a>
                           <a href="https://wa.me/+62<?= $no_wa; ?>?text=
@@ -334,13 +334,13 @@
                             </button>
                             <div class="dropdown-menu">
                               <a class="dropdown-item" href="edit.php?transactions_id=<?= $data['transactions_id']; ?>"
-                                ><i class="bx bx-edit-alt me-1"></i> Edit</a
+                                ><i class="bx bx-edit-alt me-1"></i> Edit</a>
                               >
                               <a class="dropdown-item alert_notif" href="delete.php?transactions_id=<?= $data['transactions_id']; ?>"
-                                ><i class="bx bx-trash me-1"></i> Delete</a
+                                ><i class="bx bx-trash me-1"></i> Delete</a>
                               >
                               <a class="dropdown-item" href="nota.php?transactions_id=<?= $data['transactions_id']; ?>" target="_blank"
-                                ><i class="bx bxs-printer me-1"></i> Cetak Nota</a
+                                ><i class="bx bxs-printer me-1"></i> Cetak Nota</a>
                               >
                             </div>
                           </div>

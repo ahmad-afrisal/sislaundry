@@ -1,3 +1,8 @@
+<?php
+  session_start();
+  include '../config.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,29 +12,45 @@
     <title>Document</title>
 </head>
 <body>
-    <p>Wash Tank T - 0102 Jl. Perumnas Blok F1A, <br>Kel. Catur Tunggal, Kec. Depok, Kab. Sleman, Yogyakarta</br>
-No. HP 0831-1988-7175<br>
+<?php 
+$no = 1; 
+$id = $_GET['transactions_id'];
+$query = mysqli_query($config, "SELECT * FROM transactions 
+JOIN users ON transactions.users_id=users.id
+JOIN service ON transactions.service_id=service.id
+JOIN costumers ON transactions.costumers_id=costumers.id WHERE transactions_id=$id");
+while($data = mysqli_fetch_array($query)) {
+$no_wa = substr($data['phone_number'],1);
+$status_pembayaran='';
+if($data['payment_method']== "BAYAR DIAWAL"){
+$status_pembayaran="Sudah Bayar";
+}
+else{
+  $status_pembayaran="Belum Dibayar";
+}
+$tgl1 =$data['date_transaction'];
+$tgl2 =date('Y-m-d', strtotime('+2 days', strtotime($tgl1)));  
+               
+?>
+<p>Wash D'vins Laundry Jalan candi gebang III Yogyakarta, <br>
+No. HP 081228128300<br>
 ====================<br>
-Tgl  : 04/12/2022 - 09:13<br>
-Nama : isal<br>
-No   : AU54G2.041222.051<br>
-Kasir: Novia<br><br>
+Tgl  : <?= $data['date_transaction']; ?> <br>
+Nama : <?= $data['name']; ?><br>
+No.nota : SL.<?= $data['id']; ?><br>
+Kasir: <?= $data['name']; ?><br><br>
 ===================<br>
 Tipe Laundry  : KG'an (REGULER)<br>
-Tipe Layanan  : Cuci Komplit<br>
+Tipe Layanan  : <?= $data['description']; ?><br>
 Jenis Pewangi : Fress<br>
-Berat (kg)    : 2.5<br>
-Harga /kg     : Rp. 5.000,-<br>
-Subtotal      : Rp. 12.500,-<br>
-Diskon        : Rp. 0,-<br>
-Bayar         : Rp. 12.500,-<br><br>
+Berat (kg)    : <?= $data['weight']; ?><br>
+Harga /kg     : Rp.<?= $data['price']; ?>,-<br>
+Subtotal      : Rp.<?= $data['total']; ?>,-<br>
 ====================<br>
-Perkiraan Selesai : <br>
-06/12/2022 - 09:13<br>
+Perkiraan Selesai :  <?= $tgl2; ?> <br>
+<br>
 ====================<br>
-Status   : Belum lunas<br>
-Dilunasi : -<br>
-Diambil  : -<br>
+Status   :  <?= $status_pembayaran; ?><br>
 ====================<br>
 KETENTUAN :<br>
 1. Pakaian Luntur bukan menjadi tanggung jawab laundry.<br>
@@ -40,8 +61,11 @@ Terimakasih atas kunjungan anda<br>
 <br>
 
 Klik link dibawah ini untuk melihat nota digital<br>
-https://app.1010dry.id/nota/638c02597a72c7fdd3653737
-    </p>
+<a href="http://sislaundry.test/order/nota.php?transactions_id=<?= $data['transactions_id']; ?>">http://sislaundry.test/order/nota.php ?<?= $data['transactions_id']; ?> </a>
+</p>
+<?php
+}
+?>
 
     <script>
         window.print();
