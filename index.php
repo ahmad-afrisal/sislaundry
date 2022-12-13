@@ -106,23 +106,29 @@
                                                             JOIN costumers ON transactions.costumers_id=costumers.id ORDER BY date_transaction DESC");
 
                             while($data = mysqli_fetch_array($query)) {
-                            // $no_wa = substr($data['phone_number'],1);
-                            $status_pembayaran='';
-                            if($data['payment_method']== "BAYAR DIAWAL"){
-                            $status_pembayaran="Sudah Bayar";
-                            }
-                            else{
-                            $status_pembayaran="Belum Dibayar";
-                            }
 
+                            
+                            $tgl1 =$data['date_transaction'];
+                            $tgl2 =date('Y-m-d h-m-s', strtotime('+2 days', strtotime($tgl1))); 
+                        
                             ?>
                                 <tr>
                                     <td><?= $no++; ?></td>
                                     <td>SL.<?= $data['transactions_id']; ?></td>
                                     <td><?= $data['name']; ?></td>
                                     <td><?= $data['date_transaction']; ?></td>
-                                    <td>25 Oct 2022</td>
-                                    <td><span class="badge bg-label-success me-1">Keluar</span></td>
+                                    <td><?= $tgl2; ?></td>
+                                    <td>
+                                    <?php
+                                        if($data['status']== "MASUK"){
+                                            echo '<span class="badge bg-label-info me-1">Masuk</span>';
+                                        } elseif ($data['status']== "PROSES") {
+                                            echo '<span class="badge bg-label-warning me-1">Proses</span>';
+                                        } else {
+                                            echo '<span class="badge bg-label-success me-1">Keluar</span>';
+                                        }
+                                    ?>
+                                    </td>
                                 </tr>
                             <?php
                                 }
@@ -130,7 +136,7 @@
                             </table>           
                         </div>
                         <div class="row justify-content-center">
-                            <div class="col-12 col-lg-6 mt-4"><p class="ms-3">Showing 1 to 10 of 100 entries</p></div>
+                            <div class="col-12 col-lg-6 mt-4"><p class="ms-3">Showing 1 to 10 of <?= mysqli_num_rows($query); ?> entries</p></div>
                             <div class="col-12 col-lg-6"> <nav aria-label="Page navigation" class="me-3 mt-3">
                             <ul class="pagination justify-content-end">
                                 <li class="page-item prev">

@@ -216,7 +216,7 @@
                 <a href="create.php" class="btn btn-primary mb-3">Tambah Service</a>
               </div>
               <!-- Text alignment -->
-              <h5 class="pb-1 mb-4">Pakaian</h5>
+              <h5 class="pb-1 mb-4" id="pakaian">Pakaian</h5>
               <div class="row mb-5">
                 <?php 
                   $no = 1;
@@ -241,7 +241,7 @@
               <!--/ Text alignment -->
 
               <!-- Text alignment -->
-              <h5 class="pb-1 mb-4">Seprai</h5>
+              <h5 class="pb-1 mb-4" id="seprai">Seprai</h5>
               <div class="row mb-5">
                 <?php 
                   $no = 1;
@@ -266,7 +266,7 @@
               <!--/ Text alignment -->
 
               <!-- Text alignment -->
-              <h5 class="pb-1 mb-4">Boneka</h5>
+              <h5 class="pb-1 mb-4" id="boneka">Boneka</h5>
               <div class="row mb-5">
                 <?php 
                   $no = 1;

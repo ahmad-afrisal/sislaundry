@@ -116,13 +116,20 @@ if (!isset($_SESSION["login"])) {
                     </a>
                 </li>
 
-                <!-- List Admin -->
-                <li class="menu-item">
-                    <a href="admin/index.php" class="menu-link">
-                    <i class="menu-icon tf-icons bx bxs-user-detail"></i>
-                    <div data-i18n="Analytics">List Admin</div>
-                    </a>
-                </li>
+                <?php
+                if($_SESSION["roles"] == "SUPERADMIN") {
+                    echo '
+                    <!-- List Admin -->
+                    <li class="menu-item">
+                        <a href="admin/index.php" class="menu-link">
+                        <i class="menu-icon tf-icons bx bxs-user-detail"></i>
+                        <div data-i18n="Analytics">List Admin</div>
+                        </a>
+                    </li>
+                    ';
+                }    
+
+                ?>
                 
                 <!-- Logout -->
                 <li class="menu-item">
@@ -159,7 +166,7 @@ if (!isset($_SESSION["login"])) {
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                        <img src="assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                        <img src="https://ui-avatars.com/api/?name=<?= $_SESSION["username"]; ?>" alt class="w-px-40 h-auto rounded-circle" />
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
@@ -168,12 +175,12 @@ if (!isset($_SESSION["login"])) {
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
                                     <div class="avatar avatar-online">
-                                        <img src="assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                                        <img src="https://ui-avatars.com/api/?name=<?= $_SESSION["username"]; ?>" alt class="w-px-40 h-auto rounded-circle" />
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <span class="fw-semibold d-block">John Doe</span>
-                                    <small class="text-muted">Admin</small>
+                                    <span class="fw-semibold d-block"><?= $_SESSION["username"]; ?></span>
+                                    <small class="text-muted"><?= $_SESSION["roles"]; ?></small>
                                 </div>
                             </div>
                         </a>
@@ -197,7 +204,7 @@ if (!isset($_SESSION["login"])) {
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                    <a class="dropdown-item" href="auth-login-basic.html">
+                    <a class="dropdown-item" href="logout.php">
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Log Out</span>
                     </a>
@@ -220,7 +227,7 @@ if (!isset($_SESSION["login"])) {
                 <div class="col-12 col-lg-8  col-md-12">
                 <div class="row">
                     <div class="col-12 col-lg-4 col-md-4 mb-4">
-                        <a href="">
+                        <a href="service/index.php#pakaian">
                             <div class="card bg-info">
                                 <div class="card-body">
                                     <div class="card-title d-flex align-items-start  justify-content-center">
@@ -234,7 +241,7 @@ if (!isset($_SESSION["login"])) {
                         </a>
                     </div>
                     <div class="col-12 col-lg-4 col-md-4 mb-4">
-                        <a href="">
+                        <a href="service/index.php#seprai">
                             <div class="card bg-info">
                                 <div class="card-body">
                                     <div class="card-title d-flex align-items-start justify-content-center">
@@ -248,7 +255,7 @@ if (!isset($_SESSION["login"])) {
                         </a>
                     </div>
                     <div class="col-12 col-lg-4 col-md-4 mb-4">
-                        <a href="">
+                        <a href="service/index.php#karpet">
                             <div class="card bg-info">
                                 <div class="card-body">
                                     <div class="card-title d-flex align-items-start justify-content-center">

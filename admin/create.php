@@ -2,16 +2,13 @@
 require '../function.php';
 if (isset($_POST["register"])) {
   if (registrasi($_POST) > 0 ) {
-     echo "<sriptt>
+      echo "<sriptt>
         alert('user naru telah dibuat);
-     
-     </sriptt>";
-    # code...
+      </sriptt>";
   }else {
     
     echo mysqli_error($config);
   }
-  # code...
 }
 ?>
 
@@ -132,7 +129,7 @@ if (isset($_POST["register"])) {
             
             <!-- Logout -->
             <li class="menu-item">
-                <a href="../login.php" class="menu-link">
+                <a href="../logout.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-log-out-circle"></i>
                 <div data-i18n="Analytics">Logout</div>
                 </a>
