@@ -17,7 +17,9 @@ if (isset($_POST["login"])) {
       # code...
       //sesi
       $_SESSION["login"] = true;
-      $_SESSION["username"] = mysqli_query($config,"SELECT * FROM users WHERE username = '$username'");
+      $_SESSION["id"] = $row["id"];
+      $_SESSION["username"] = $row["username"];
+      $_SESSION["roles"] = $row["roles"];
       header("Location: dashboard.php");
       exit;
     }

@@ -79,7 +79,7 @@
 
           <ul class="menu-inner py-1">
             <li class="menu-item ">
-                <a href="../dashboard.html" class="menu-link">
+                <a href="../dashboard.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
                 </a>
@@ -87,7 +87,7 @@
             
             <!-- Costumer -->
             <li class="menu-item">
-                <a href="../costumer/create.html" class="menu-link">
+                <a href="../costumer/create.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-user-plus"></i>
                 <div data-i18n="Analytics">Costumer</div>
                 </a>
@@ -103,7 +103,7 @@
 
             <!-- Service -->
             <li class="menu-item">
-                <a href="../service/index.html" class="menu-link">
+                <a href="../service/index.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-package"></i>
                 <div data-i18n="Analytics">Service</div>
                 </a>
@@ -111,7 +111,7 @@
 
             <!-- List Admin -->
             <li class="menu-item">
-                <a href="../admin/index.html" class="menu-link ">
+                <a href="../admin/index.php" class="menu-link ">
                 <i class="menu-icon tf-icons bx bxs-user-detail"></i>
                 <div data-i18n="Analytics">List Admin</div>
                 </a>
@@ -119,7 +119,7 @@
             
             <!-- Logout -->
             <li class="menu-item">
-                <a href="../login.html" class="menu-link">
+                <a href="../login.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-log-out-circle"></i>
                 <div data-i18n="Analytics">Logout</div>
                 </a>

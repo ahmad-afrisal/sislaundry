@@ -79,7 +79,7 @@
 
           <ul class="menu-inner py-1">
             <li class="menu-item ">
-                <a href="../dashboard.html" class="menu-link">
+                <a href="../dashboard.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
                 </a>
@@ -87,7 +87,7 @@
             
             <!-- Costumer -->
             <li class="menu-item">
-                <a href="../costumer/create.html" class="menu-link">
+                <a href="../costumer/create.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-user-plus"></i>
                 <div data-i18n="Analytics">Costumer</div>
                 </a>
@@ -103,7 +103,7 @@
 
             <!-- Service -->
             <li class="menu-item">
-                <a href="../service/index.html" class="menu-link">
+                <a href="../service/index.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-package"></i>
                 <div data-i18n="Analytics">Service</div>
                 </a>
@@ -111,7 +111,7 @@
 
             <!-- List Admin -->
             <li class="menu-item">
-                <a href="../admin/index.html" class="menu-link ">
+                <a href="../admin/index.php" class="menu-link ">
                 <i class="menu-icon tf-icons bx bxs-user-detail"></i>
                 <div data-i18n="Analytics">List Admin</div>
                 </a>
@@ -119,7 +119,7 @@
             
             <!-- Logout -->
             <li class="menu-item">
-                <a href="../login.html" class="menu-link">
+                <a href="../login.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-log-out-circle"></i>
                 <div data-i18n="Analytics">Logout</div>
                 </a>
@@ -187,7 +187,7 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="../login.html">
+                      <a class="dropdown-item" href="../login.php">
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Log Out</span>
                       </a>
@@ -212,50 +212,64 @@
                 <div class="col-xl">
                   <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                      <h5 class="mb-0">New Order</h5>
+                      <h5 class="mb-0">New Order 2</h5>
                       <!-- <small class="text-muted float-end">Default label</small> -->
                     </div>
                     <div class="card-body">
-                      <form>
+                      <form method="POST" action="store.php" id="formD" name="formD">
                         <div class="mb-3">
-                          <label class="form-label" for="basic-default-fullname">Nama Customer</label>
+                          <label class="form-label" for="basic-default-fullname" >Nama Customer</label>
                           <input
                           class="form-control"
                           list="datalistOptions"
                           id="exampleDataList"
+                          name="username"
                           placeholder="Type to search..."
                         />
                         <datalist id="datalistOptions">
                         <?php
-                          $query = mysqli_query($config, "SELECT * FROM costumers");
-                          while($data = mysqli_fetch_array($query)) {
+                            $query = mysqli_query($config, "SELECT * FROM costumers");
+                            while($data = mysqli_fetch_array($query)) {
                         ?>
-                          <option value="<?= $data['id'];?>"><?= $data['name']; ?></option>
+                            <option value="<?= $data['id'];?>"><?= $data['name']; ?></option>
                         <?php
-                          }
+                            }
                         ?>
                         </datalist>
                         </div>
                         <div class="mb-3">
-                          <label for="exampleFormControlSelect1" class="form-label">Service List</label>
-                          <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
-                            <option selected>Pilih Service</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <label for="exampleFormControlSelect1" class="form-label">Service List</label>
+                            <select class="form-select" id="exampleFormControlSelect1" name="harga"  aria-label="Default select example">
+                                <option value="" selected disabled>Pilih Service</option>
+                                <?php
+                                    $query = mysqli_query($config, "SELECT * FROM service");
+                                    while($ser = mysqli_fetch_array($query)) {
+                                ?>
+                                <option value="<?= $ser['id'];?> <?= $ser['price'];?>"><?= $ser['name']; ?></option>
+                                <?php
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                          <label for="pewangi" class="form-label">Pewangi</label>
+                          <select class="form-select" id="pewangi" name="pewangi" aria-label="Default select example">
+                            <option selected>Pilih Pewangi</option>
+                            <option value="Baccarat">Baccarat</option>
+                            <option value="Blossom">Blossom</option>
+                            <option value="Lily">Lily</option>
+                            <option value="Vanilla">Vanilla</option>
                           </select>
                         </div>
-                        <!-- <div class="mb-3">
-                          <label class="form-label" for="basic-default-company">Tanggal Masuk</label>
-                          <input type="datetime" class="form-control" id="basic-default-company" placeholder="" />
-                        </div> -->
+                        
                         <div class="mb-3">
                           <label class="form-label" for="basic-default-company">Berat (Kg)</label>
-                          <input type="text" class="form-control" id="basic-default-company" placeholder="" />
+                          <!-- <input type="text" class="form-control" name="berat" id="berat" onkeyup="OnChange(this.value)" onKeyPress="return isNumberKey(event)" placeholder="" /> -->
+                          <input type="text" class="form-control" name="berat" id="berat" onkeyup="OnChange(this.value)" onKeyPress="" placeholder="" />
                         </div>
                         <div class="mb-3">
-                          <label class="form-label" for="basic-default-company">Total Bayar</label>
-                          <input type="text" class="form-control" id="basic-default-company" placeholder="" />
+                            <label class="form-label" for="basic-default-company">Total Bayar</label>
+                            <input type="text" class="form-control" name="totalBayar" id="totalBayar" value="" placeholder="" />
                         </div>
                         <div class="mb-3">
                           <label class="form-label d-block" for="basic-default-company">Pembayaran</label>
@@ -265,28 +279,29 @@
                               type="radio"
                               name="inlineRadioOptions"
                               id="inlineRadio1"
-                              value="option1"
+                              value="BAYAR DIAWAL"
                             />
                             <label class="form-check-label" for="inlineRadio1">Bayar Diawal</label>
                           </div>
                           <div class="form-check form-check-inline">
                             <input
-                              class="form-check-input"
-                              type="radio"
-                              name="inlineRadioOptions"
-                              id="inlineRadio2"
-                              value="option2"
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio2"
+                                value="BAYAR NANTI"
                             />
                             <label class="form-check-label" for="inlineRadio2">Bayar Nanti</label>
                           </div>
                         </div>
                         <div class="mb-3">
-                          <label class="form-label" for="basic-default-company">Nominal Bayar</label>
-                          <input type="text" class="form-control" id="basic-default-company" placeholder="" />
+                            <label class="form-label" for="">Nominal Bayar</label>
+                            <!-- <input type="text" class="form-control" id="jmppsn" name="jmlpsn" onkeyup="OnChange(this.value)" onKeyPress="return isNumberKey(event)" placeholder="" /> -->
+                            <input type="text" class="form-control" id="jmppsn" name="jmlpsn" onkeyup="OnChange(this.value)" placeholder="" />
                         </div>
                         <div class="mb-3">
-                          <label class="form-label" for="basic-default-company">Kembalian</label>
-                          <input type="text" class="form-control" id="basic-default-company" placeholder="" disabled/>
+                            <label class="form-label" for="txtDisplay">Kembalian</label>
+                            <input type="text" class="form-control" id="txtDisplay" name="txtDisplay" value="" placeholder="" disabled/>
                         </div>
                         <button type="submit" class="btn btn-primary">Simpan</button>
                         <a href="index.html" class="btn btn-secondary">Kembali</a>
@@ -339,7 +354,30 @@
 
     <!-- Page JS -->
     <script src="../assets/js/dashboards-analytics.js"></script>
+    <script type="text/javascript" language="Javascript">
 
+        hargasatuan = document.formD.harga.value;
+        document.formD.totalBayar.value = hargasatuan;
+        jumlah = document.formD.berat.value;
+        document.formD.totalBayar.value = jumlah;
+
+        // jumlah2 = document.formD.jmlpsn.value;
+        // document.formD.txtDisplay.value = jumlah2;
+
+        
+        function OnChange(value){
+            hargasatuan = document.formD.harga.value;
+            hargasatuansplit = hargasatuan.split(" ");
+            test = hargasatuansplit[1];
+            jumlah = document.formD.berat.value;
+            total = jumlah * test;
+            document.formD.totalBayar.value = total;
+
+            jumlah2 = document.formD.jmlpsn.value;
+            total2 = jumlah2 - total ;
+            document.formD.txtDisplay.value = total2;
+        }
+    </script>
   
   </body>
 </html>
