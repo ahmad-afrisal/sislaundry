@@ -207,7 +207,8 @@ if (!isset($_SESSION["login"])) {
                     <li>
                     <a class="dropdown-item" href="logout.php">
                         <i class="bx bx-power-off me-2"></i>
-                        <span class="align-middle">Log Out</span>
+                        <span href="login.php" class="align-middle">Log Out</span>
+                        
                     </a>
                     </li>
                 </ul>
