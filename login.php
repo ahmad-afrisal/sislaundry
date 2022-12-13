@@ -7,6 +7,7 @@ if (isset($_POST["login"])) {
   $username = $_POST["username"];
   $password = $_POST["password"];
 
+
   $result = mysqli_query($config,"SELECT * FROM users WHERE username = '$username'");
 
   if (mysqli_num_rows($result) === 1) {
@@ -16,6 +17,7 @@ if (isset($_POST["login"])) {
       # code...
       //sesi
       $_SESSION["login"] = true;
+      $_SESSION["username"] = mysqli_query($config,"SELECT * FROM users WHERE username = '$username'");
       header("Location: dashboard.php");
       exit;
     }

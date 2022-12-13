@@ -7,6 +7,13 @@ session_start();
     
 include '../config.php';
 
+
+if (!isset($_SESSION["login"])) {
+    header("Location: login.php");
+    exit;
+    # code...
+}
+
 $name = strtolower($_POST["name"]);
 $username = strtolower(stripcslashes($_POST["username"]));
 $phone_number = strtolower(stripcslashes($_POST["phone_number"]));
