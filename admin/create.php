@@ -252,8 +252,8 @@ if (isset($_POST["register"])) {
                           <label class="form-label" for="confpassword">Konfirmasi Password</label>
                           <input type="password" class="form-control" id="confpassword" name="confpassword" placeholder="" required/>
                         </div>
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-                        <a href="index.html" class="btn btn-secondary">Kembali</a>
+                        <button type="submit" name="register" class="btn btn-primary">Simpan</button>
+                        <a href="index.php" class="btn btn-secondary">Kembali</a>
                       </form>
 
                     </div>

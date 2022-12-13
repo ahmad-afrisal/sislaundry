@@ -25,6 +25,8 @@ function registrasi($data){
 
     //insert
     mysqli_query($config,"INSERT INTO users VALUES('','$namaadmin','$username','$nohp','$password','ADMIN')");
+
+    
 }
 
 ?>

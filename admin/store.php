@@ -40,5 +40,5 @@ $password = password_hash($password, PASSWORD_DEFAULT);
 
 // tambahkan user baru ke db
 mysqli_query($config, "INSERT INTO users VALUES('', '$name', '$username','$phone_number','$password', 'ADMIN')");
-header('Location:index.php');
+// header('Location:index.php');
 ?>
