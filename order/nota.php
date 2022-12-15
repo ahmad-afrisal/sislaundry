@@ -38,7 +38,7 @@ No. HP 081228128300<br>
 Tgl  : <?= $data['date_transaction']; ?> <br>
 Nama : <?= $data['name']; ?><br>
 No.nota : SL.<?= $data['id']; ?><br>
-Kasir: <?= $data['name']; ?><br><br>
+Kasir: <?= $data['nama']; ?><br><br>
 ===================<br>
 Tipe Laundry  : KG'an (REGULER)<br>
 Tipe Layanan  : <?= $data['description']; ?><br>
