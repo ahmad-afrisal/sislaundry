@@ -265,7 +265,7 @@ if (!isset($_SESSION["login"])) {
                                             <img src="assets/img/icons/dash/karpet.png" alt="Credit Card" class="rounded" />
                                         </div>
                                     </div>
-                                    <h5 class="card-title mb-2 text-white text-center">Karpet</h5>
+                                    <h5 class="card-title mb-2 text-white text-center">Boneka</h5>
                                 </div>
                             </div>
                         </a>

@@ -258,7 +258,7 @@ if (!isset($_SESSION["login"])) {
                       ?>
                       <tr>
                         <td><strong><?= $no++; ?></strong></td>
-                        <td><?= $data['name']; ?></td>
+                        <td><?= $data['nama']; ?></td>
                         <td><?= $data['username']; ?></td>
                         <td><?= $data['phone_number']; ?></td>
                         <td>

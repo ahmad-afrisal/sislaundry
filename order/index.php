@@ -304,8 +304,8 @@
                               %0A====================%0A
 
                               %0ATgl: <?= $data['date_transaction']; ?> 
-                              %0ANama : <?= $data['nameCus']; ?>
-                              %0ANo.nota : SL.<?= $data['transactions_id']; ?>%0AKasir: <?= $data['nameKasir']; ?>%0A
+                              %0ANama : <?= $data['name']; ?>
+                              %0ANo.nota : SL.<?= $data['id']; ?>%0AKasir: <?= $data['users_id']; ?>%0A
 
                               %0A==================== %0A
                               %0ATipe Layanan  : <?= $data['name_service']; ?>
