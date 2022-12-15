@@ -1,7 +1,6 @@
 <?php
   session_start();
   include '../config.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -400,23 +399,23 @@
                         <div class="row">
                           <div class="col mb-3">
                             <label for="nameBasic" class="form-label">Name</label>
-                            <input type="text" id="nameBasic" class="form-control" placeholder="Enter Name" />
+                            <input type="text" id="nameBasic" name="name"value="<?= $data['name']; ?>" class="form-control" placeholder="Enter Name" />
                           </div>
                         </div>
                         <div class="row">
                           <div class="col mb-3">
                             <label for="nameBasic" class="form-label">Email</label>
-                            <input type="text" id="nameBasic" class="form-control" placeholder="Enter Email" />
+                            <input type="text" id="nameBasic" name="email" value="<?= $data['email']; ?>"" class="form-control" placeholder="Enter Email" />
                           </div>
                         </div>
                         <div class="row g-2">
                           <div class="col mb-0">
                             <label for="emailBasic" class="form-label">No HP</label>
-                            <input type="text" id="emailBasic" class="form-control" placeholder="xxxx@xxx.xx" />
+                            <input type="text" id="emailBasic" name="no_hp" value="<?= $data['phone_number']; ?>" class="form-control" placeholder="xxxx@xxx.xx" />
                           </div>
                           <div class="col mb-0">
                             <label for="dobBasic" class="form-label">Tanggal Masuk</label>
-                            <input type="text" id="dobBasic" class="form-control" placeholder="DD / MM / YY" />
+                            <input type="text" id="dobBasic" name="tanggal_masuk" value="<?= $data['date_transaction']; ?>" class="form-control" placeholder="DD / MM / YY" />
                           </div>
                         </div>
                       </div>
@@ -424,7 +423,9 @@
                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
                           Edit
                         </button>
+                        <a href="edit.php?id=<?= $data['id']; ?>"</a>
                         <button type="button" class="btn btn-danger">Hapus</button>
+                        <a href="delete.php?id=<?= $data['id']; ?>"</a>
                       </div>
                     </div>
                   </div>
