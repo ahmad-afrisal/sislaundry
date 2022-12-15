@@ -235,7 +235,7 @@
                   <table class="table" id="example" >
                     <thead>
                       <tr>
-                        <th>Detail</th>
+                        <!-- <th>Detail</th> -->
                         <th>ID TRAN</th>
                         <th>Nama</th>
                         <th>No HP</th>
@@ -265,14 +265,16 @@
                           $status_pembayaran="Belum Dibayar";
                         }
                         
+                        $tgl1 =$data['date_transaction'];
+                        $tgl2 =date('Y-m-d', strtotime('+2 days', strtotime($tgl1)));  
                       ?>
                       <tr>
-                        <td>
+                        <!-- <td>
                           <button type="button" class="btn btn-sm rounded-pill btn-icon btn-outline-primary" data-bs-toggle="modal"
                           data-bs-target="#basicModal">
                             <span class="tf-icons bx bx-plus-circle"></span>
                           </button>
-                        </td>
+                        </td> -->
                         <td><strong>SL.<?= $data['transactions_id']; ?></strong></td>
                         <td><?= $data['name']; ?></td>
                         <td><?= $data['phone_number']; ?></td>
@@ -284,47 +286,59 @@
                             } elseif($data['status'] == "KELUAR") {
                               echo '<span class="badge bg-label-success me-1">Keluar</span>';
                             } else {
-                              echo '<span class="badge bg-label-warning me-1">Proses</span>';
+                              echo '<span class="badge bg-label-warning me-1">Selesai</span>';
                             }
                           ?>
                         </td>
                         <td>
-                          <a href="https://wa.me/+62<?= $no_wa; ?>?text=Wash D'vins Laundry 
-                            Jalan candi gebang III Yogyakarta%0ANo. HP 081228128300
-                            %0A====================%0A
+                          <?php 
+                            if($data['status'] == "MASUK") {
+                              ?>
+                              <a href="https://wa.me/+62<?= $no_wa; ?>?text=Wash D'vins Laundry 
+                              Jalan candi gebang III Yogyakarta%0ANo. HP 081228128300
+                              %0A====================%0A
 
+<<<<<<< HEAD
                             %0ATgl: <?= $data['date_transaction']; ?> 
                             %0ANama : <?= $data['name']; ?>
                             %0ANo.nota : SL.<?= $data['id']; ?>%0AKasir: <?= $data['nama']; ?>%0A
+=======
+                              %0ATgl: <?= $data['date_transaction']; ?> 
+                              %0ANama : <?= $data['name']; ?>
+                              %0ANo.nota : SL.<?= $data['id']; ?>%0AKasir: <?= $data['users_id']; ?>%0A
+>>>>>>> 0dfebe2e7875bdcc3b9fc56decde27cd958e14ad
 
-                            %0A==================== %0A
-                            %0ATipe Laundry  : KG'an (REGULER)
-                            %0ATipe Layanan  : <?= $data['description']; ?>
-                            %0AJenis Pewangi : Fress
-                            %0ABerat (kg)    :<?= $data['weight']; ?>
-                            %0AHarga /kg     : Rp. <?= $data['price']; ?>,-
-                            %0ASubtotal      : Rp. <?= $data['total']; ?>,-
+                              %0A==================== %0A
+                              %0ATipe Laundry  : KG'an (REGULER)
+                              %0ATipe Layanan  : <?= $data['description']; ?>
+                              %0AJenis Pewangi : <?= $data['pewangi']; ?>
+                              %0ABerat (kg)    :<?= $data['weight']; ?>
+                              %0AHarga /kg     : Rp. <?= $data['price']; ?>,-
+                              %0ASubtotal      : Rp. <?= $data['total']; ?>,-
 
-                            %0A==================== %0APerkiraan Selesai : %0A %0A
-                            %0A==================== %0AStatus   : <?= $status_pembayaran; ?>
-                            %0A==================== %0A
-                            %0AKETENTUAN : 
-                            %0A1. Pakaian Luntur bukan menjadi tanggung jawab laundry.
-                            %0A2. Komplain pakaian kami layani 1x24 jam, sejak pakaian diambil.
-                            %0A3. Pengambilan laundry wajib menggunakan nota asli.
-                            %0A4. Laundry yang tidak diambil jangka waktu 1 bulan, jika terjadi kerusakan menjadi tanggung jawab pemilik.
-                            Terimakasih atas kunjungan anda %0A
-                            
-                            %0A==================== %0A
-                            %0AKlik link dibawah ini untuk melihat nota digital
-                            %0Ahttp://sislaundry.test/order/nota.php <?= $data['transactions_id']; ?>" target="_blank" class="btn rounded-pill btn-icon btn-success">
-                            <span class="tf-icons bx bxl-whatsapp"></span>
-                          </a>
-                          <a href="https://wa.me/+62<?= $no_wa; ?>?text=
-                          Hai <?= $data['name']; ?> Cucian Laundry anda sudah selesai, silahkan ambil di D'vins Laundry 
-                          %0A================%0ANo.nota : SL.<?= $data['id']; ?>%0AStatus : <?= $status_pembayaran; ?>%0AHarga : Rp. <?= $data['total']; ?>" target="_blank" class="btn rounded-pill btn-icon btn-info">
-                            <span class="tf-icons bx bxl-whatsapp"></span>
-                          </a>
+                              %0A==================== %0APerkiraan Selesai : <?= $tgl2; ?>
+                              %0A==================== %0AStatus   : <?= $status_pembayaran; ?>
+
+                              %0A==================== %0A
+                              %0AKlik link dibawah ini untuk melihat nota digital
+                              %0Ahttp://sislaundry.test/order/nota.php<?= $data['transactions_id']; ?>" target="_blank" class="btn rounded-pill btn-icon btn-success">
+                              <span class="tf-icons bx bxl-whatsapp"></span>
+                            </a>
+                              <?php
+                            }
+                          ?>
+                          <?php 
+                            if($data['status'] == "PROSES") {
+                             ?>
+                             <a href="https://wa.me/+62<?= $no_wa; ?>?text=
+                              Hai <?= $data['name']; ?> Cucian Laundry anda sudah selesai, silahkan ambil di D'vins Laundry 
+                              %0A================%0ANo.nota : SL.<?= $data['id']; ?>%0AStatus : <?= $status_pembayaran; ?>%0AHarga : Rp. <?= $data['total']; ?>" target="_blank" class="btn rounded-pill btn-icon btn-info">
+                                <span class="tf-icons bx bxl-whatsapp"></span>
+                              </a>
+                            <?php
+                            } 
+                          ?>
+                           
                         </td>
                         <td>
                           <div class="dropdown">
