@@ -298,15 +298,14 @@
                               Jalan candi gebang III Yogyakarta%0ANo. HP 081228128300
                               %0A====================%0A
 
-<<<<<<< HEAD
-                            %0ATgl: <?= $data['date_transaction']; ?> 
-                            %0ANama : <?= $data['name']; ?>
-                            %0ANo.nota : SL.<?= $data['id']; ?>%0AKasir: <?= $data['nama']; ?>%0A
-=======
                               %0ATgl: <?= $data['date_transaction']; ?> 
                               %0ANama : <?= $data['name']; ?>
-                              %0ANo.nota : SL.<?= $data['id']; ?>%0AKasir: <?= $data['users_id']; ?>%0A
->>>>>>> 0dfebe2e7875bdcc3b9fc56decde27cd958e14ad
+                             %0ANo.nota : SL.<?= $data['id']; ?>%0AKasir: <?= $data['nama']; ?>%0A
+
+                              %0ATgl: <?= $data['date_transaction']; ?> 
+                              %0ANama : <?= $data['name']; ?>
+                              %0ANo.nota : SL.<?= $data['id']; ?>%0AKasir: <?= $data['nama']; ?>%0A
+
 
                               %0A==================== %0A
                               %0ATipe Laundry  : KG'an (REGULER)
