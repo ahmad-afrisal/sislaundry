@@ -93,7 +93,7 @@ if (!isset($_SESSION["login"])) {
             
             <!-- Costumer -->
             <li class="menu-item">
-                <a href="../costumer/create.php" class="menu-link">
+                <a href="../costumer/index.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-user-plus"></i>
                 <div data-i18n="Analytics">Costumer</div>
                 </a>
@@ -125,7 +125,7 @@ if (!isset($_SESSION["login"])) {
             
             <!-- Logout -->
             <li class="menu-item">
-                <a href="../login.php" class="menu-link">
+                <a href="../logout.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-log-out-circle"></i>
                 <div data-i18n="Analytics">Logout</div>
                 </a>
@@ -195,9 +195,9 @@ if (!isset($_SESSION["login"])) {
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                    <a class="dropdown-item" href="logout.php">
+                    <a class="dropdown-item" href="../logout.php">
                         <i class="bx bx-power-off me-2"></i>
-                        <span href="logout.php" class="align-middle">Log Out</span>
+                        <span class="align-middle">Log Out</span>
                         
                     </a>
                     </li>
@@ -214,14 +214,14 @@ if (!isset($_SESSION["login"])) {
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Service /</span> Add New Service</h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Service /</span> Tambah Service</h4>
 
               <!-- Basic Layout -->
               <div class="row">
                 <div class="col-xl">
                   <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                      <h5 class="mb-0">New Service</h5>
+                      <h5 class="mb-0">Tambah Service</h5>
                       <!-- <small class="text-muted float-end">Default label</small> -->
                     </div>
                     <div class="card-body">

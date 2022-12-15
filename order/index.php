@@ -1,6 +1,11 @@
 <?php
   session_start();
   include '../config.php';
+  if (!isset($_SESSION["login"])) {
+    header("Location: ../login.php");
+    exit;
+    # code...
+  }
 ?>
 
 <!DOCTYPE html>
@@ -86,7 +91,7 @@
             
             <!-- Costumer -->
             <li class="menu-item">
-                <a href="../costumer/create.php" class="menu-link">
+                <a href="../costumer/index.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-user-plus"></i>
                 <div data-i18n="Analytics">Costumer</div>
                 </a>
@@ -118,7 +123,7 @@
             
             <!-- Logout -->
             <li class="menu-item">
-                <a href="../login.php" class="menu-link">
+                <a href="../logout.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-log-out-circle"></i>
                 <div data-i18n="Analytics">Logout</div>
                 </a>
@@ -148,24 +153,24 @@
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                   <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                      <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                        <img src="https://ui-avatars.com/api/?name=<?= $_SESSION["username"]; ?>" alt class="w-px-40 h-auto rounded-circle" />
                     </div>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end">
                     <li>
-                      <a class="dropdown-item" href="#">
-                        <div class="d-flex">
-                          <div class="flex-shrink-0 me-3">
-                            <div class="avatar avatar-online">
-                              <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                        <a class="dropdown-item" href="#">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0 me-3">
+                                    <div class="avatar avatar-online">
+                                        <img src="https://ui-avatars.com/api/?name=<?= $_SESSION["username"]; ?>" alt class="w-px-40 h-auto rounded-circle" />
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <span class="fw-semibold d-block"><?= $_SESSION["username"]; ?></span>
+                                    <small class="text-muted"><?= $_SESSION["roles"]; ?></small>
+                                </div>
                             </div>
-                          </div>
-                          <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">John Doe</span>
-                            <small class="text-muted">Admin</small>
-                          </div>
-                        </div>
-                      </a>
+                        </a>
                     </li>
                     <li>
                       <div class="dropdown-divider"></div>
@@ -186,7 +191,7 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="../login.php">
+                      <a class="dropdown-item" href="../logout.php">
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Log Out</span>
                       </a>
@@ -304,8 +309,8 @@
                               %0A====================%0A
 
                               %0ATgl: <?= $data['date_transaction']; ?> 
-                              %0ANama : <?= $data['name']; ?>
-                              %0ANo.nota : SL.<?= $data['id']; ?>%0AKasir: <?= $data['users_id']; ?>%0A
+                              %0ANama : <?= $data['nameCus']; ?>
+                              %0ANo.nota : SL.<?= $data['transactions_id']; ?>%0AKasir: <?= $data['nameKasir']; ?>%0A
 
                               %0A==================== %0A
                               %0ATipe Layanan  : <?= $data['name_service']; ?>
@@ -319,7 +324,7 @@
 
                               %0A==================== %0A
                               %0AKlik link dibawah ini untuk melihat nota digital
-                              %0Ahttp://sislaundry.test/order/nota.php<?= $data['transactions_id']; ?>" target="_blank" class="btn rounded-pill btn-icon btn-success">
+                              %0Ahttp://laodinawang.site/order/nota.php<?= $data['transactions_id']; ?>" target="_blank" class="btn rounded-pill btn-icon btn-success">
                               <span class="tf-icons bx bxl-whatsapp"></span>
                             </a>
                               <?php
@@ -327,16 +332,16 @@
                           ?>
                           <?php 
                             if($data['status'] == "PROSES") {
-                             ?>
-                             <a href="https://wa.me/+62<?= $no_wa; ?>?text=
+                          ?>
+                            <a href="https://wa.me/+62<?= $no_wa; ?>?text=
                               Hai <?= $data['nameCus']; ?> Cucian Laundry anda sudah selesai, silahkan ambil di D'vins Laundry 
                               %0A================%0ANo.nota : SL.<?= $data['transactions_id']; ?>%0AStatus : <?= $status_pembayaran; ?>%0AHarga : Rp. <?= $data['total']; ?>" target="_blank" class="btn rounded-pill btn-icon btn-info">
                                 <span class="tf-icons bx bxl-whatsapp"></span>
-                              </a>
+                            </a>
                             <?php
                             } 
                           ?>
-                           
+
                         </td>
                         <td>
                           <div class="dropdown">
@@ -362,38 +367,7 @@
                       ?>
                   </table>           
                 </div>
-                <div class="row justify-content-center">
-                  <div class="col-12 col-lg-6 mt-4"><p class="ms-3">Showing 1 to 7 of 100 entries</p></div>
-                  <div class="col-12 col-lg-6"> <nav aria-label="Page navigation" class="me-3 mt-3">
-                    <ul class="pagination justify-content-end">
-                      <li class="page-item prev">
-                        <a class="page-link" href="javascript:void(0);"
-                          ><i class="tf-icon bx bx-chevrons-left"></i
-                        ></a>
-                      </li>
-                      <li class="page-item active">
-                        <a class="page-link" href="javascript:void(0);">1</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:void(0);">2</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:void(0);">3</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:void(0);">4</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:void(0);">5</a>
-                      </li>
-                      <li class="page-item next">
-                        <a class="page-link" href="javascript:void(0);"
-                          ><i class="tf-icon bx bx-chevrons-right"></i
-                        ></a>
-                      </li>
-                    </ul>
-                  </nav></div>
-                </div>
+
                 <!-- Modal -->
                 <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
                   <div class="modal-dialog" role="document">

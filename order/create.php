@@ -92,7 +92,7 @@
             
             <!-- Costumer -->
             <li class="menu-item">
-                <a href="../costumer/create.php" class="menu-link">
+                <a href="../costumer/index.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-user-plus"></i>
                 <div data-i18n="Analytics">Costumer</div>
                 </a>
@@ -124,7 +124,7 @@
             
             <!-- Logout -->
             <li class="menu-item">
-                <a href="../login.php" class="menu-link">
+                <a href="../logout.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-log-out-circle"></i>
                 <div data-i18n="Analytics">Logout</div>
                 </a>
@@ -192,9 +192,9 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                    <a class="dropdown-item" href="logout.php">
+                    <a class="dropdown-item" href="../logout.php">
                         <i class="bx bx-power-off me-2"></i>
-                        <span href="logout.php" class="align-middle">Log Out</span>
+                        <span class="align-middle">Log Out</span>
                         
                     </a>
                     </li>
@@ -218,7 +218,7 @@
                 <div class="col-xl">
                   <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                      <h5 class="mb-0">New Order 2</h5>
+                      <h5 class="mb-0">New Order</h5>
                       <!-- <small class="text-muted float-end">Default label</small> -->
                     </div>
                     <div class="card-body">
@@ -270,7 +270,6 @@
                         
                         <div class="mb-3">
                           <label class="form-label" for="basic-default-company">Berat (Kg)</label>
-                          <!-- <input type="text" class="form-control" name="berat" id="berat" onkeyup="OnChange(this.value)" onKeyPress="return isNumberKey(event)" placeholder="" /> -->
                           <input type="text" class="form-control" name="berat" id="berat" onkeyup="OnChange(this.value)" onKeyPress="" placeholder="" />
                         </div>
                         <div class="mb-3">
@@ -302,7 +301,6 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="">Nominal Bayar</label>
-                            <!-- <input type="text" class="form-control" id="jmppsn" name="jmlpsn" onkeyup="OnChange(this.value)" onKeyPress="return isNumberKey(event)" placeholder="" /> -->
                             <input type="text" class="form-control" id="jmppsn" name="jmlpsn" onkeyup="OnChange(this.value)" placeholder="" />
                         </div>
                         <div class="mb-3">
@@ -310,7 +308,7 @@
                             <input type="text" class="form-control" id="txtDisplay" name="txtDisplay" value="" placeholder="" disabled/>
                         </div>
                         <button type="submit" class="btn btn-primary">Simpan</button>
-                        <a href="index.html" class="btn btn-secondary">Kembali</a>
+                        <a href="index.php" class="btn btn-secondary">Kembali</a>
                       </form>
                     </div>
                   </div>

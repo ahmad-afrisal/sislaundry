@@ -4,7 +4,7 @@
   
 
 if (!isset($_SESSION["login"])) {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit;
     # code...
 }
@@ -124,7 +124,7 @@ if (!isset($_SESSION["login"])) {
             
             <!-- Logout -->
             <li class="menu-item">
-                <a href="../login.php" class="menu-link">
+                <a href="../logout.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-log-out-circle"></i>
                 <div data-i18n="Analytics">Logout</div>
                 </a>
@@ -194,9 +194,9 @@ if (!isset($_SESSION["login"])) {
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                    <a class="dropdown-item" href="logout.php">
+                    <a class="dropdown-item" href="../logout.php">
                         <i class="bx bx-power-off me-2"></i>
-                        <span href="logout.php" class="align-middle">Log Out</span>
+                        <span  class="align-middle">Log Out</span>
                         
                     </a>
                     </li>
@@ -258,7 +258,7 @@ if (!isset($_SESSION["login"])) {
                       ?>
                       <tr>
                         <td><strong><?= $no++; ?></strong></td>
-                        <td><?= $data['nama']; ?></td>
+                        <td><?= $data['name']; ?></td>
                         <td><?= $data['username']; ?></td>
                         <td><?= $data['phone_number']; ?></td>
                         <td>
@@ -284,38 +284,6 @@ if (!isset($_SESSION["login"])) {
                       ?>
 
                   </table>           
-                </div>
-                <div class="row justify-content-center">
-                  <div class="col-12 col-lg-6 mt-4"><p class="ms-3">Showing 1 to 7 of 100 entries</p></div>
-                  <div class="col-12 col-lg-6"> <nav aria-label="Page navigation" class="me-3 mt-3">
-                    <ul class="pagination justify-content-end">
-                      <li class="page-item prev">
-                        <a class="page-link" href="javascript:void(0);"
-                          ><i class="tf-icon bx bx-chevrons-left"></i
-                        ></a>
-                      </li>
-                      <li class="page-item active">
-                        <a class="page-link" href="javascript:void(0);">1</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:void(0);">2</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:void(0);">3</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:void(0);">4</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="javascript:void(0);">5</a>
-                      </li>
-                      <li class="page-item next">
-                        <a class="page-link" href="javascript:void(0);"
-                          ><i class="tf-icon bx bx-chevrons-right"></i
-                        ></a>
-                      </li>
-                    </ul>
-                  </nav></div>
                 </div>
               </div>
               <!--/ Basic Bootstrap Table -->

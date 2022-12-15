@@ -120,3 +120,23 @@ Layanan 1 Hari Selesai
 
                       transactions
 transactions_id, pewangi, date_transaction, status, weight, total, payment_method, customers.name as nameCus, phone_number, users.name as nameKasir
+
+
+INSERT INTO `users` (`id`, `nama`, `username`, `phone_number`, `password`, `roles`) VALUES
+(1, 'Ahmad Afrisal', 'isal', '081340281522', '$2y$10$k7ajsc9RObM2BJVlauBsiOfaIX.ujm.t4HwDrnBi60n32pMZIULLy', 'SUPERADMIN'),
+(2, 'fajar', 'fajar', '085157856223', '$2y$10$k7ajsc9RObM2BJVlauBsiOfaIX.ujm.t4HwDrnBi60n32pMZIULLy', 'ADMIN');
+
+USERNAME : isal
+PASSWORD : riva
+ROLES : SUPERADMIN
+
+USERNAME : fajar
+PASSWORD : fajar
+ROLES : ADMIN
+
+USERNAME : merry
+PASSWORD : merry
+ROLES : ADMIN
+
+CUSTOMER DONE
+ADMIN DONE

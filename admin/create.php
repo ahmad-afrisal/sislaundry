@@ -3,15 +3,17 @@
 
 <?php
 require '../function.php';
+session_start();
+
 if (!isset($_SESSION["login"])) {
-  header("Location: login.php");
+  header("Location: ../login.php");
   exit;
   # code...
 }
 if (isset($_POST["register"])) {
   if (registrasi($_POST) > 0 ) {
       echo "<sriptt>
-        alert('user naru telah dibuat);
+        alert('user baru telah dibuat);
       </sriptt>";
   }else {
     

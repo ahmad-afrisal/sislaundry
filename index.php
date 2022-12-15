@@ -135,38 +135,6 @@
                             ?>
                             </table>           
                         </div>
-                        <div class="row justify-content-center">
-                            <div class="col-12 col-lg-6 mt-4"><p class="ms-3">Showing 1 to 10 of <?= mysqli_num_rows($query); ?> entries</p></div>
-                            <div class="col-12 col-lg-6"> <nav aria-label="Page navigation" class="me-3 mt-3">
-                            <ul class="pagination justify-content-end">
-                                <li class="page-item prev">
-                                <a class="page-link" href="javascript:void(0);"
-                                    ><i class="tf-icon bx bx-chevrons-left"></i
-                                ></a>
-                                </li>
-                                <li class="page-item active">
-                                <a class="page-link" href="javascript:void(0);">1</a>
-                                </li>
-                                <li class="page-item">
-                                <a class="page-link" href="javascript:void(0);">2</a>
-                                </li>
-                                <li class="page-item">
-                                <a class="page-link" href="javascript:void(0);">3</a>
-                                </li>
-                                <li class="page-item">
-                                <a class="page-link" href="javascript:void(0);">4</a>
-                                </li>
-                                <li class="page-item">
-                                <a class="page-link" href="javascript:void(0);">5</a>
-                                </li>
-                                <li class="page-item next">
-                                <a class="page-link" href="javascript:void(0);"
-                                    ><i class="tf-icon bx bx-chevrons-right"></i
-                                ></a>
-                                </li>
-                            </ul>
-                            </nav></div>
-                        </div>
                         </div>
                         <!-- /Account -->
                     </div>

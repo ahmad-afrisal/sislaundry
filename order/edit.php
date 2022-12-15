@@ -2,10 +2,10 @@
   session_start();
   include '../config.php';
   if (!isset($_SESSION["login"])) {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit;
     # code...
-}
+  }
 ?>
 
 <!DOCTYPE html>
@@ -92,7 +92,7 @@
             
             <!-- Costumer -->
             <li class="menu-item">
-                <a href="../costumer/create.php" class="menu-link">
+                <a href="../costumer/index.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-user-plus"></i>
                 <div data-i18n="Analytics">Costumer</div>
                 </a>
@@ -124,7 +124,7 @@
             
             <!-- Logout -->
             <li class="menu-item">
-                <a href="../login.php" class="menu-link">
+                <a href="../logout.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-log-out-circle"></i>
                 <div data-i18n="Analytics">Logout</div>
                 </a>
@@ -192,12 +192,10 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="../login.php">
-                      <a class="dropdown-item" href="logout.php">
+                      <a class="dropdown-item" href="../logout.php">
 
                       <i class="bx bx-power-off me-2"></i>
                       <span href="logout.php" class="align-middle">Log Out</span>
-                    </a> 
                     </a>
                     </li>
                   </ul>
@@ -238,7 +236,7 @@
                             <option value="<?= $data['status']; ?>" >MASUK</option>
                             <option value="" disabled>--------------</option>
                             <option value="MASUK">MASUK</option>
-                            <option value="PROSES">PROSES</option>
+                            <option value="PROSES">SELESAI</option>
                             <option value="KELUAR">KELUAR</option>
                           </select>
                         </div>

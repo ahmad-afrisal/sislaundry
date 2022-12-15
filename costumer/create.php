@@ -126,7 +126,7 @@ if (!isset($_SESSION["login"])) {
             
             <!-- Logout -->
             <li class="menu-item">
-                <a href="../login.php" class="menu-link">
+                <a href="../logout.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-log-out-circle"></i>
                 <div data-i18n="Analytics">Logout</div>
                 </a>
@@ -196,9 +196,9 @@ if (!isset($_SESSION["login"])) {
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                    <a class="dropdown-item" href="logout.php">
+                    <a class="dropdown-item" href="../logout.php">
                         <i class="bx bx-power-off me-2"></i>
-                        <span href="logout.php" class="align-middle">Log Out</span>
+                        <span  class="align-middle">Log Out</span>
                         
                     </a>
                     </li>

@@ -126,7 +126,7 @@
             
             <!-- Logout -->
             <li class="menu-item">
-                <a href="../login.php" class="menu-link">
+                <a href="../logout.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-log-out-circle"></i>
                 <div data-i18n="Analytics">Logout</div>
                 </a>
@@ -195,9 +195,9 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                    <a class="dropdown-item" href="logout.php">
+                    <a class="dropdown-item" href="../logout.php">
                         <i class="bx bx-power-off me-2"></i>
-                        <span href="logout.php" class="align-middle">Log Out</span>
+                        <span class="align-middle">Log Out</span>
                         
                     </a>
                     </li>
@@ -222,7 +222,6 @@
                   <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
                       <h5 class="mb-0">Edit Data</h5>
-                      <!-- <small class="text-muted float-end">Default label</small> -->
                     </div>
                     <div class="card-body">
                     <?php
@@ -231,7 +230,7 @@
                         while($data = mysqli_fetch_array($query)) {
                         
                       ?>
-                      <form method="POST" action="store.php">
+                      <form method="POST" action="update.php">
                           <div class="mb-3">
                             <label class="form-label" for="name">Nama Customer</label>
                             <input type="hidden" class="form-control" id="id" value="<?= $data['id'];?>" name="id" required/>
@@ -308,8 +307,5 @@
     <!-- Page JS -->
     <script src="../assets/js/dashboards-analytics.js"></script>
 
-
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
   </body>
 </html>
