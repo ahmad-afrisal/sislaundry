@@ -295,7 +295,7 @@
 
                             %0ATgl: <?= $data['date_transaction']; ?> 
                             %0ANama : <?= $data['name']; ?>
-                            %0ANo.nota : SL.<?= $data['id']; ?>%0AKasir: <?= $data['users_id']; ?>%0A
+                            %0ANo.nota : SL.<?= $data['id']; ?>%0AKasir: <?= $data['nama']; ?>%0A
 
                             %0A==================== %0A
                             %0ATipe Laundry  : KG'an (REGULER)
