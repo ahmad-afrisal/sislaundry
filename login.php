@@ -54,7 +54,8 @@ if (isset($_POST["login"])) {
             <div class="col-md-7">
               <div class="card-body">
                 <div class="brand-wrapper">
-                  <img src="assets/img/icons/brands/logo-login.svg" alt="logo" class="logo" />
+                  <!-- <h1>SISLaundry</h1> -->
+                  <!-- <img src="assets/img/icons/brands/logo-login.svg" alt="logo" class="logo" /> -->
                 </div>
                 <p class="login-card-description">Get's Started</p>
                 <?php if(isset($error)) : ?>

@@ -81,7 +81,7 @@
                     </ul>
                     
                     <div class="card mb-4">
-                        <h5 class="card-header">Profile Details</h5>
+                        <h5 class="card-header">Orders</h5>
                         <!-- Account -->
                         <div class="card-body">
                         <div class="table-responsive text-nowrap">
@@ -103,7 +103,7 @@
                             $query = mysqli_query($config, "SELECT * FROM transactions 
                                                             JOIN users ON transactions.users_id=users.id
                                                             JOIN service ON transactions.service_id=service.id
-                                                            JOIN costumers ON transactions.costumers_id=costumers.id ORDER BY date_transaction DESC");
+                                                            JOIN costumers ON transactions.costumers_id=costumers.id ORDER BY date_transaction DESC LIMIT 10");
 
                             while($data = mysqli_fetch_array($query)) {
 

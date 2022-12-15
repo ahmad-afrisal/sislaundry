@@ -1,5 +1,6 @@
 <?php 
 session_start();
+include 'config.php';
 
 if (!isset($_SESSION["login"])) {
     header("Location: login.php");
@@ -72,7 +73,7 @@ if (!isset($_SESSION["login"])) {
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
         <div class="app-brand demo">
-            <a href="index.html" class="app-brand-link">
+            <a href="index.php" class="app-brand-link">
             </span>
             <span class="app-brand-text demo menu-text fw-bolder ms-2">sisLaundry</span>
             </a>
@@ -206,7 +207,8 @@ if (!isset($_SESSION["login"])) {
                     <li>
                     <a class="dropdown-item" href="logout.php">
                         <i class="bx bx-power-off me-2"></i>
-                        <span class="align-middle">Log Out</span>
+                        <span href="login.php" class="align-middle">Log Out</span>
+                        
                     </a>
                     </li>
                 </ul>
@@ -281,8 +283,18 @@ if (!isset($_SESSION["login"])) {
                                 <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
                                     <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
                                         <div class="mt-sm-auto">
-                                            <h3 class="mb-0 text-info">Rp. 10.000.000</h3>
-                                            <small class="text-info text-nowrap fw-semibold">Minggu ini - 22/06/2002</small>
+                                            <?php
+                                                $bln = date("m");
+                                                $query = mysqli_query($config, "SELECT sum(total) as pemasukan FROM transactions WHERE MONTH(date_transaction) = '".$bln."' ");
+                                                
+                                                while ($r = mysqli_fetch_array($query)) {
+                                            ?>
+
+                                            <h3 class="mb-0 text-info">Rp. <?= $r['pemasukan']; ?></h3>
+                                            <?php
+                                                }
+                                            ?>
+                                            <small class="text-info text-nowrap fw-semibold">Bulan ini - <?= date('d/m/Y') ;?></small>
                                         </div>
                                     </div>
                                 </div>
@@ -301,7 +313,16 @@ if (!isset($_SESSION["login"])) {
                     <div class="card-header d-flex align-items-center justify-content-between pb-0">
                     <div class="card-title mb-3">
                         <h5 class="m-0 me-2">Order Terbaru</h5>
-                        <small class="text-muted">42.82k Total Sales</small>
+                        <?php
+                            $bln = date("m");
+                            $query = mysqli_query($config, "SELECT count(total) as totalOrder FROM transactions");
+                            
+                            while ($r = mysqli_fetch_array($query)) {
+                        ?>
+                        <small class="text-muted"><?= $r['totalOrder']; ?>  Total Order</small>
+                        <?php
+                            }
+                        ?>
                     </div>
                     <div class="dropdown">
                         <button
@@ -322,70 +343,32 @@ if (!isset($_SESSION["login"])) {
                     </div>
                     </div>
                     <div class="card-body">
-                    <ul class="p-0 m-0">
-                        <li class="d-flex mb-4 pb-1">
-                        <div class="avatar flex-shrink-0 me-3">
-                            <span class="avatar-initial rounded bg-label-info"
-                            ><i class="bx bx-show-alt"></i
-                            ></span>
-                        </div>
-                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                            <div class="me-2">
-                            <h6 class="mb-0">Ahmad Afrisal</h6>
-                            <small class="text-muted">085341995616</small>
-                            </div>
-                            <div class="user-progress">
-                            <small class="fw-semibold">23 Oktiber 2022</small>
-                            </div>
-                        </div>
-                        </li>
-                        <li class="d-flex mb-4 pb-1">
-                        <div class="avatar flex-shrink-0 me-3">
-                            <a href="">
-                                <span class="avatar-initial rounded bg-label-info"><i class="bx bx-show-alt"></i></span>
-                            </a>
-                        </div>
-                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                            <div class="me-2">
-                            <h6 class="mb-0">Fajar Hidayat</h6>
-                            <small class="text-muted">092672892773</small>
-                            </div>
-                            <div class="user-progress">
-                            <small class="fw-semibold">30 Oktober 2022</small>
-                            </div>
-                        </div>
-                        </li>
-                        <li class="d-flex mb-4 pb-1">
-                        <div class="avatar flex-shrink-0 me-3">
-                            <span class="avatar-initial rounded bg-label-info"><i class="bx bx-show-alt"></i></span>
-                        </div>
-                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                            <div class="me-2">
-                            <h6 class="mb-0">Wajida</h6>
-                            <small class="text-muted">087265980233</small>
-                            </div>
-                            <div class="user-progress">
-                            <small class="fw-semibold">01 November 2022</small>
-                            </div>
-                        </div>
-                        </li>
-                        <li class="d-flex">
-                        <div class="avatar flex-shrink-0 me-3">
-                            <span class="avatar-initial rounded bg-label-info">
-                                <i class="bx bx-show-alt"></i>
-                            </span>
-                        </div>
-                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                            <div class="me-2">
-                            <h6 class="mb-0">Muflika</h6>
-                            <small class="text-muted">083723279344</small>
-                            </div>
-                            <div class="user-progress">
-                            <small class="fw-semibold">02 November 2022</small>
-                            </div>
-                        </div>
-                        </li>
-                    </ul>
+                        <ul class="p-0 m-0">
+                        <?php
+                            $query = mysqli_query($config, "SELECT * FROM transactions 
+                            JOIN users ON transactions.users_id=users.id
+                            JOIN service ON transactions.service_id=service.id
+                            JOIN costumers ON transactions.costumers_id=costumers.id ORDER BY date_transaction DESC LIMIT 5");
+
+                            while($data = mysqli_fetch_array($query)) {
+                        ?>
+                            <li class="d-flex mb-4 pb-1">
+                                <div class="avatar flex-shrink-0 me-3">
+                                    <span class="avatar-initial rounded bg-label-info"><i class="bx bx-show-alt"></i></span>
+                                </div>
+                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                    <div class="me-2"><h6 class="mb-0"><?= $data['name']; ?></h6>
+                                        <small class="text-muted"><?= $data['phone_number']; ?></small>
+                                    </div>
+                                    <div class="user-progress">
+                                        <small class="fw-semibold"><?= $data['date_transaction']; ?></small>
+                                    </div>
+                                </div>
+                            </li>
+                        <?php
+                            }
+                        ?>
+                        </ul>
                     </div>
                 </div>
                 </div>
@@ -395,7 +378,7 @@ if (!isset($_SESSION["login"])) {
                 <div class="col-md-6 col-lg-4 order-2 order-sm-3 mb-4">
                 <div class="card h-100">
                     <div class="card-header bg-info mb-4 d-flex align-items-center justify-content-between">
-                        <h5 class="card-title m-0 me-2 text-white ">Laporan Mingguan</h5>
+                        <h5 class="card-title m-0 me-2 text-white ">Laporan Bulanan</h5>
                         <div class="dropdown">
                             <button
                             class="btn p-0"
@@ -415,14 +398,23 @@ if (!isset($_SESSION["login"])) {
                         </div>
                     </div>
                     <div class="card-body">
-                        <ul class="p-0 m-0">
+                        <ul class="p-0 m-0">                            
                             <li class="d-flex mb-4 pb-1">
                                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                     <div class="me-2">
                                         <h6 class="mb-0 text-info">Total Order</h6>
                                     </div>
                                     <div class="user-progress d-flex align-items-center gap-1">
-                                        <h6 class="mb-0 text-info">0</h6>
+                                    <?php
+                                        $bln = date("m");
+                                        $query = mysqli_query($config, "SELECT count(total) as totalOrder FROM transactions WHERE MONTH(date_transaction) = '".$bln."'");
+                                        
+                                        while ($r = mysqli_fetch_array($query)) {
+                                    ?>
+                                        <h6 class="mb-0 text-info"><?= $r['totalOrder']; ?></h6>
+                                    <?php
+                                        }
+                                    ?>
                                     </div>
                                 </div>
                             </li>
@@ -432,7 +424,16 @@ if (!isset($_SESSION["login"])) {
                                         <h6 class="mb-0 text-info">Received</h6>
                                     </div>
                                     <div class="user-progress d-flex align-items-center gap-1">
-                                        <h6 class="mb-0 text-info">0</h6>
+                                    <?php
+                                        $bln = date("m");
+                                        $query = mysqli_query($config, "SELECT count(total) as received FROM transactions WHERE STATUS='MASUK' and MONTH(date_transaction) = '".$bln."'");
+                                        
+                                        while ($r = mysqli_fetch_array($query)) {
+                                    ?>
+                                        <h6 class="mb-0 text-info"><?= $r['received']; ?></h6>
+                                    <?php
+                                        }
+                                    ?>
                                     </div>
                                 </div>
                             </li>
@@ -442,7 +443,16 @@ if (!isset($_SESSION["login"])) {
                                         <h6 class="mb-0 text-info">On Progress</h6>
                                     </div>
                                     <div class="user-progress d-flex align-items-center gap-1">
-                                        <h6 class="mb-0 text-info">0</h6>
+                                    <?php
+                                        $bln = date("m");
+                                        $query = mysqli_query($config, "SELECT count(total) as onProgress FROM transactions WHERE STATUS='PROSES' and MONTH(date_transaction) = '".$bln."'");
+                                        
+                                        while ($r = mysqli_fetch_array($query)) {
+                                    ?>
+                                        <h6 class="mb-0 text-info"><?= $r['onProgress']; ?></h6>
+                                    <?php
+                                        }
+                                    ?>
                                     </div>
                                 </div>
                             </li>
@@ -452,10 +462,20 @@ if (!isset($_SESSION["login"])) {
                                         <h6 class="mb-0 text-info">Completed</h6>
                                     </div>
                                     <div class="user-progress d-flex align-items-center gap-1">
-                                        <h6 class="mb-0 text-info">0</h6>
+                                    <?php
+                                        $bln = date("m");
+                                        $query = mysqli_query($config, "SELECT count(total) as completed FROM transactions WHERE STATUS='PROSES' and MONTH(date_transaction) = '".$bln."'");
+                                        
+                                        while ($r = mysqli_fetch_array($query)) {
+                                    ?>
+                                        <h6 class="mb-0 text-info"><?= $r['completed']; ?></h6>
+                                        <?php
+                                        }
+                                    ?>
                                     </div>
                                 </div>
                             </li>
+                            
                         </ul>
                     </div>
                 </div>
