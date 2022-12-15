@@ -131,10 +131,8 @@
         <div class="layout-page">
           <!-- Navbar -->
 
-          <nav
-            class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
-            id="layout-navbar"
-          >
+          <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+            id="layout-navbar">
             <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
               <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
                 <i class="bx bx-menu bx-sm"></i>
@@ -235,7 +233,7 @@
                   <table class="table" id="example" >
                     <thead>
                       <tr>
-                        <!-- <th>Detail</th> -->
+                        <th>Detail</th>
                         <th>ID TRAN</th>
                         <th>Nama</th>
                         <th>No HP</th>
@@ -250,7 +248,9 @@
 
                         
                         $no = 1;
-                        $query = mysqli_query($config, "SELECT * FROM transactions 
+                        $query = mysqli_query($config, "SELECT transactions_id, pewangi, email, description, price, date_transaction, 
+                                                        status, weight, total, payment_method, costumers.name as nameCus, costumers.phone_number, 
+                                                        users.name as nameKasir, service.name as name_service FROM transactions 
                                                         JOIN users ON transactions.users_id=users.id
                                                         JOIN service ON transactions.service_id=service.id
                                                         JOIN costumers ON transactions.costumers_id=costumers.id ORDER BY date_transaction DESC");
@@ -269,14 +269,19 @@
                         $tgl2 =date('Y-m-d', strtotime('+2 days', strtotime($tgl1)));  
                       ?>
                       <tr>
-                        <!-- <td>
-                          <button type="button" class="btn btn-sm rounded-pill btn-icon btn-outline-primary" data-bs-toggle="modal"
-                          data-bs-target="#basicModal">
-                            <span class="tf-icons bx bx-plus-circle"></span>
-                          </button>
-                        </td> -->
-                        <td><strong>SL.<?= $data['transactions_id']; ?></strong></td>
-                        <td><?= $data['name']; ?></td>
+                        <td>
+                          <a href="" class="btn btn-sm rounded-pill btn-icon btn-outline-primary" 
+                                            data-bs-toggle="modal" 
+                                            data-bs-target="#basicModal"
+                                            data-transactions_id="<?php echo $data['transactions_id']; ?>"
+                                            data-name="<?php echo $data['nameCus']; ?>"
+                                            data-email="<?php echo $data['email']; ?>"
+                                            data-phone_number="<?php echo $data['phone_number']; ?>"
+                                            data-date_transaction="<?php echo $data['date_transaction']; ?>"
+                          ><span class="tf-icons bx bx-plus-circle"></span></a>
+                        </td>
+                        <td><strong><?= $data['transactions_id']; ?></strong></td>
+                        <td><?= $data['nameCus']; ?></td>
                         <td><?= $data['phone_number']; ?></td>
                         <td><?= $data['date_transaction']; ?></td>
                         <td>
@@ -299,12 +304,11 @@
                               %0A====================%0A
 
                               %0ATgl: <?= $data['date_transaction']; ?> 
-                              %0ANama : <?= $data['name']; ?>
-                              %0ANo.nota : SL.<?= $data['id']; ?>%0AKasir: <?= $data['users_id']; ?>%0A
+                              %0ANama : <?= $data['nameCus']; ?>
+                              %0ANo.nota : SL.<?= $data['transactions_id']; ?>%0AKasir: <?= $data['nameKasir']; ?>%0A
 
                               %0A==================== %0A
-                              %0ATipe Laundry  : KG'an (REGULER)
-                              %0ATipe Layanan  : <?= $data['description']; ?>
+                              %0ATipe Layanan  : <?= $data['name_service']; ?>
                               %0AJenis Pewangi : <?= $data['pewangi']; ?>
                               %0ABerat (kg)    :<?= $data['weight']; ?>
                               %0AHarga /kg     : Rp. <?= $data['price']; ?>,-
@@ -325,8 +329,8 @@
                             if($data['status'] == "PROSES") {
                              ?>
                              <a href="https://wa.me/+62<?= $no_wa; ?>?text=
-                              Hai <?= $data['name']; ?> Cucian Laundry anda sudah selesai, silahkan ambil di D'vins Laundry 
-                              %0A================%0ANo.nota : SL.<?= $data['id']; ?>%0AStatus : <?= $status_pembayaran; ?>%0AHarga : Rp. <?= $data['total']; ?>" target="_blank" class="btn rounded-pill btn-icon btn-info">
+                              Hai <?= $data['nameCus']; ?> Cucian Laundry anda sudah selesai, silahkan ambil di D'vins Laundry 
+                              %0A================%0ANo.nota : SL.<?= $data['transactions_id']; ?>%0AStatus : <?= $status_pembayaran; ?>%0AHarga : Rp. <?= $data['total']; ?>" target="_blank" class="btn rounded-pill btn-icon btn-info">
                                 <span class="tf-icons bx bxl-whatsapp"></span>
                               </a>
                             <?php
@@ -395,7 +399,7 @@
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel1">Detail ID TRANSAKSI : SL.1</h5>
+                        <h5 class="modal-title" id="exampleModalLabel1">Detail</h5>
                         <button
                           type="button"
                           class="btn-close"
@@ -406,34 +410,32 @@
                       <div class="modal-body">
                         <div class="row">
                           <div class="col mb-3">
+                            <label for="nameBasic" class="form-label">ID</label>
+                            <input type="text" id="transactions_id" name="transactions_id" class="form-control" />
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col mb-3">
                             <label for="nameBasic" class="form-label">Name</label>
-                            <input type="text" id="nameBasic" name="name"value="<?= $data['name']; ?>" class="form-control" placeholder="Enter Name" />
+                            <input type="text" id="name" name="name" class="form-control" />
                           </div>
                         </div>
                         <div class="row">
                           <div class="col mb-3">
                             <label for="nameBasic" class="form-label">Email</label>
-                            <input type="text" id="nameBasic" name="email" value="<?= $data['email']; ?>"" class="form-control" placeholder="Enter Email" />
+                            <input type="text" id="email" name="email"  class="form-control" />
                           </div>
                         </div>
                         <div class="row g-2">
                           <div class="col mb-0">
                             <label for="emailBasic" class="form-label">No HP</label>
-                            <input type="text" id="emailBasic" name="no_hp" value="<?= $data['phone_number']; ?>" class="form-control" placeholder="xxxx@xxx.xx" />
+                            <input type="text" id="phone_number" name="phone_number" class="form-control"  />
                           </div>
                           <div class="col mb-0">
-                            <label for="dobBasic" class="form-label">Tanggal Masuk</label>
-                            <input type="text" id="dobBasic" name="tanggal_masuk" value="<?= $data['date_transaction']; ?>" class="form-control" placeholder="DD / MM / YY" />
+                            <label for="date_transaction" class="form-label">Tanggal Masuk</label>
+                            <input type="text" id="date_transaction" name="date_transaction"  class="form-control"/>
                           </div>
                         </div>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
-                          Edit
-                        </button>
-                        <a href="edit.php?id=<?= $data['id']; ?>"</a>
-                        <button type="button" class="btn btn-danger">Hapus</button>
-                        <a href="delete.php?id=<?= $data['id']; ?>"</a>
                       </div>
                     </div>
                   </div>
@@ -523,6 +525,26 @@
                 })
                 return false;
             });
+
+            $('#basicModal').on('show.bs.modal', function (event) {
+                // event.relatedtarget menampilkan elemen mana yang digunakan saat diklik.
+                var button              = $(event.relatedTarget)
+
+                // data-data yang disimpan pada tombol edit dimasukkan ke dalam variabelnya masing-masing 
+                var transactions_id         = button.data('transactions_id')
+                var name         = button.data('name')
+                var email        = button.data('email')
+                var date_transaction    = button.data('date_transaction')
+                var phone_number        = button.data('phone_number')
+                var modal = $(this)
+
+                //variabel di atas dimasukkan ke dalam element yang sesuai dengan idnya masing-masing
+                modal.find('#transactions_id').val(transactions_id)
+                modal.find('#name').val(name)
+                modal.find('#email').val(email)
+                modal.find('#date_transaction').val(date_transaction)
+                modal.find('#phone_number').val(phone_number)
+            })
         </script>
 
   </body>

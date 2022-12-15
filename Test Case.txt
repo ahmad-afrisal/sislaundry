@@ -117,3 +117,6 @@ Layanan 1 Hari Selesai
                           <label class="form-label" for="nominalBayar">Nominal Bayar</label>
                           <input type="text" class="form-control" id="nominalBayar" name="harga" onkeyup="OnChange(this.value)" onKeyPress="return isNumberKey(event)" placeholder="" />
                         </div>
+
+                      transactions
+transactions_id, pewangi, date_transaction, status, weight, total, payment_method, customers.name as nameCus, phone_number, users.name as nameKasir

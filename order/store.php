@@ -9,7 +9,7 @@
     $totalBayar = $_POST['totalBayar'];
     $inlineRadioOptions = $_POST['inlineRadioOptions'];
     $status = "MASUK";
-    $admin = 1;
+    $admin = $_SESSION['id'];
     $date = date('Y-m-d H:i:s');
 
 
@@ -17,5 +17,5 @@
 
     $_SESSION["sukses"] = 'pesan';
     
-    echo $date;
-    // header('location:index.php');
+    // echo $date;
+    header('location:index.php');
