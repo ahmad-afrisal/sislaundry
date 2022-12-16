@@ -113,11 +113,26 @@
                 </a>
             </li>
 
-            <!-- List Admin -->
-            <li class="menu-item">
-                <a href="../admin/index.php" class="menu-link ">
-                <i class="menu-icon tf-icons bx bxs-user-detail"></i>
-                <div data-i18n="Analytics">List Admin</div>
+            <?php
+              if($_SESSION["roles"] == "SUPERADMIN") {
+                  echo '
+                  <!-- List Admin -->
+                  <li class="menu-item">
+                      <a href="../admin/index.php" class="menu-link">
+                      <i class="menu-icon tf-icons bx bxs-user-detail"></i>
+                      <div data-i18n="Analytics">List Admin</div>
+                      </a>
+                  </li>
+                  ';
+              }    
+
+            ?>
+
+             <!-- Service -->
+             <li class="menu-item">
+                <a href="../profile/profile.php" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-user"></i>
+                <div data-i18n="Analytics">My Profile</div>
                 </a>
             </li>
             
@@ -176,15 +191,9 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item" href="../profile/profile.php">
                         <i class="bx bx-user me-2"></i>
                         <span class="align-middle">My Profile</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <i class="bx bx-cog me-2"></i>
-                        <span class="align-middle">Settings</span>
                       </a>
                     </li>
                     <li>
@@ -253,8 +262,8 @@
 
                         
                         $no = 1;
-                        $query = mysqli_query($config, "SELECT transactions_id, pewangi, email, description, price, date_transaction, 
-                                                        status, weight, total, payment_method, costumers.name as nameCus, costumers.phone_number, 
+                        $query = mysqli_query($config, "SELECT transactions_id, email, description, price, date_transaction, 
+                                                        status, weight, payment_method, costumers.name as nameCus, costumers.phone_number, 
                                                         users.name as nameKasir, service.name as name_service FROM transactions 
                                                         JOIN users ON transactions.users_id=users.id
                                                         JOIN service ON transactions.service_id=service.id
@@ -314,28 +323,27 @@
 
                               %0A==================== %0A
                               %0ATipe Layanan  : <?= $data['name_service']; ?>
-                              %0AJenis Pewangi : <?= $data['pewangi']; ?>
                               %0ABerat (kg)    :<?= $data['weight']; ?>
                               %0AHarga /kg     : Rp. <?= $data['price']; ?>,-
-                              %0ASubtotal      : Rp. <?= $data['total']; ?>,-
+                              %0ASubtotal      : Rp. <?= $data['weight'] * $data['price'];  ?>,-
 
                               %0A==================== %0APerkiraan Selesai : <?= $tgl2; ?>
                               %0A==================== %0AStatus   : <?= $status_pembayaran; ?>
 
                               %0A==================== %0A
                               %0AKlik link dibawah ini untuk melihat nota digital
-                              %0Ahttp://laodinawang.site/order/nota.php<?= $data['transactions_id']; ?>" target="_blank" class="btn rounded-pill btn-icon btn-success">
+                              %0Ahttp://localhost/sislaundry/order/nota.php?transactions_id=<?= $data['transactions_id']; ?>" target="_blank" class="btn rounded-pill btn-icon btn-success">
                               <span class="tf-icons bx bxl-whatsapp"></span>
                             </a>
                               <?php
                             }
                           ?>
                           <?php 
-                            if($data['status'] == "PROSES") {
+                            if($data['status'] == "SELESAI") {
                           ?>
                             <a href="https://wa.me/+62<?= $no_wa; ?>?text=
                               Hai <?= $data['nameCus']; ?> Cucian Laundry anda sudah selesai, silahkan ambil di D'vins Laundry 
-                              %0A================%0ANo.nota : SL.<?= $data['transactions_id']; ?>%0AStatus : <?= $status_pembayaran; ?>%0AHarga : Rp. <?= $data['total']; ?>" target="_blank" class="btn rounded-pill btn-icon btn-info">
+                              %0A================%0ANo.nota : SL.<?= $data['transactions_id']; ?>%0AStatus : <?= $status_pembayaran; ?>%0AHarga : Rp. <?= $data['weight'] * $data['price']; ?>" target="_blank" class="btn rounded-pill btn-icon btn-info">
                                 <span class="tf-icons bx bxl-whatsapp"></span>
                             </a>
                             <?php

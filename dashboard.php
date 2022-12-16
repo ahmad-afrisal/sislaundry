@@ -30,10 +30,6 @@ if (!isset($_SESSION["login"])) {
     <title>Dashboard </title>
 
     <meta name="description" content="" />
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon/favicon.ico" />
-
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -132,6 +128,14 @@ if (!isset($_SESSION["login"])) {
 
                 ?>
                 
+                  <!-- Service -->
+                  <li class="menu-item">
+                    <a href="profile/profile.php" class="menu-link">
+                    <i class="menu-icon tf-icons bx bxs-user"></i>
+                    <div data-i18n="Analytics">My Profile</div>
+                    </a>
+                </li>
+
                 <!-- Logout -->
                 <li class="menu-item">
                     <a href="login.php" class="menu-link">
@@ -190,15 +194,9 @@ if (!isset($_SESSION["login"])) {
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="profile/profile.php">
                             <i class="bx bx-user me-2"></i>
                             <span class="align-middle">My Profile</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#">
-                            <i class="bx bx-cog me-2"></i>
-                            <span class="align-middle">Settings</span>
                         </a>
                     </li>
                     <li>
@@ -285,7 +283,7 @@ if (!isset($_SESSION["login"])) {
                                         <div class="mt-sm-auto">
                                             <?php
                                                 $bln = date("m");
-                                                $query = mysqli_query($config, "SELECT sum(total) as pemasukan FROM transactions WHERE MONTH(date_transaction) = '".$bln."' ");
+                                                $query = mysqli_query($config, "SELECT sum(total) as pemasukan FROM totalOrder WHERE MONTH(date_transaction) = '".$bln."' ");
                                                 
                                                 while ($r = mysqli_fetch_array($query)) {
                                             ?>
@@ -315,7 +313,7 @@ if (!isset($_SESSION["login"])) {
                         <h5 class="m-0 me-2">Order Terbaru</h5>
                         <?php
                             $bln = date("m");
-                            $query = mysqli_query($config, "SELECT count(total) as totalOrder FROM transactions");
+                            $query = mysqli_query($config, "SELECT count(total) as totalOrder FROM totalorder");
                             
                             while ($r = mysqli_fetch_array($query)) {
                         ?>
@@ -407,7 +405,7 @@ if (!isset($_SESSION["login"])) {
                                     <div class="user-progress d-flex align-items-center gap-1">
                                     <?php
                                         $bln = date("m");
-                                        $query = mysqli_query($config, "SELECT count(total) as totalOrder FROM transactions WHERE MONTH(date_transaction) = '".$bln."'");
+                                        $query = mysqli_query($config, "SELECT count(total) as totalOrder FROM totalorder WHERE MONTH(date_transaction) = '".$bln."'");
                                         
                                         while ($r = mysqli_fetch_array($query)) {
                                     ?>
@@ -426,7 +424,7 @@ if (!isset($_SESSION["login"])) {
                                     <div class="user-progress d-flex align-items-center gap-1">
                                     <?php
                                         $bln = date("m");
-                                        $query = mysqli_query($config, "SELECT count(total) as received FROM transactions WHERE STATUS='MASUK' and MONTH(date_transaction) = '".$bln."'");
+                                        $query = mysqli_query($config, "SELECT count(total) as received FROM totalorder WHERE STATUS='MASUK' and MONTH(date_transaction) = '".$bln."'");
                                         
                                         while ($r = mysqli_fetch_array($query)) {
                                     ?>
@@ -437,25 +435,7 @@ if (!isset($_SESSION["login"])) {
                                     </div>
                                 </div>
                             </li>
-                            <li class="d-flex mb-4 pb-1">
-                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                    <div class="me-2">
-                                        <h6 class="mb-0 text-info">On Progress</h6>
-                                    </div>
-                                    <div class="user-progress d-flex align-items-center gap-1">
-                                    <?php
-                                        $bln = date("m");
-                                        $query = mysqli_query($config, "SELECT count(total) as onProgress FROM transactions WHERE STATUS='PROSES' and MONTH(date_transaction) = '".$bln."'");
-                                        
-                                        while ($r = mysqli_fetch_array($query)) {
-                                    ?>
-                                        <h6 class="mb-0 text-info"><?= $r['onProgress']; ?></h6>
-                                    <?php
-                                        }
-                                    ?>
-                                    </div>
-                                </div>
-                            </li>
+
                             <li class="d-flex mb-4 pb-1">
                                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                     <div class="me-2">
@@ -464,12 +444,31 @@ if (!isset($_SESSION["login"])) {
                                     <div class="user-progress d-flex align-items-center gap-1">
                                     <?php
                                         $bln = date("m");
-                                        $query = mysqli_query($config, "SELECT count(total) as completed FROM transactions WHERE STATUS='PROSES' and MONTH(date_transaction) = '".$bln."'");
+                                        $query = mysqli_query($config, "SELECT count(total) as completed FROM totalorder WHERE STATUS='SELESAI' and MONTH(date_transaction) = '".$bln."'");
                                         
                                         while ($r = mysqli_fetch_array($query)) {
                                     ?>
                                         <h6 class="mb-0 text-info"><?= $r['completed']; ?></h6>
                                         <?php
+                                        }
+                                    ?>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="d-flex mb-4 pb-1">
+                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                    <div class="me-2">
+                                        <h6 class="mb-0 text-info">Deliver</h6>
+                                    </div>
+                                    <div class="user-progress d-flex align-items-center gap-1">
+                                    <?php
+                                        $bln = date("m");
+                                        $query = mysqli_query($config, "SELECT count(total) as onProgress FROM totalorder WHERE STATUS='KELUAR' and MONTH(date_transaction) = '".$bln."'");
+                                        
+                                        while ($r = mysqli_fetch_array($query)) {
+                                    ?>
+                                        <h6 class="mb-0 text-info"><?= $r['onProgress']; ?></h6>
+                                    <?php
                                         }
                                     ?>
                                     </div>
@@ -532,7 +531,5 @@ if (!isset($_SESSION["login"])) {
     <!-- Page JS -->
     <script src="assets/js/dashboards-analytics.js"></script>
 
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 </html>

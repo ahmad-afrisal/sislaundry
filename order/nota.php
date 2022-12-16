@@ -15,12 +15,12 @@
   <?php 
     $no = 1; 
     $id = $_GET['transactions_id'];
-    $query = mysqli_query($config, "SELECT transactions_id, pewangi, email, description, price, date_transaction, 
-          status, weight, total, payment_method, costumers.name as nameCus, costumers.phone_number, 
+    $query = mysqli_query($config, "SELECT transactions_id, email, description, price, date_transaction, 
+          status, weight, payment_method, costumers.name as nameCus, costumers.phone_number, 
           users.name as nameKasir, service.name as name_service FROM transactions 
           JOIN users ON transactions.users_id=users.id
           JOIN service ON transactions.service_id=service.id
-          JOIN costumers ON transactions.costumers_id=costumers.id ORDER BY date_transaction DESC");
+          JOIN costumers ON transactions.costumers_id=costumers.id WHERE transactions_id='$id' ORDER BY date_transaction DESC ");
 
     while($data = mysqli_fetch_array($query)) {
       $no_wa = substr($data['phone_number'],1);
@@ -44,10 +44,9 @@ No.nota : SL.<?= $data['transactions_id']; ?><br>
 Kasir: <?= $data['nameKasir']; ?><br><br>
 ===================<br>
 Tipe Layanan  : <?= $data['name_service']; ?><br>
-Jenis Pewangi : <?= $data['pewangi']; ?><br>
 Berat (kg)    : <?= $data['weight']; ?><br>
 Harga /kg     : Rp.<?= $data['price']; ?>,-<br>
-Subtotal      : Rp.<?= $data['total']; ?>,-<br>
+Subtotal      : Rp.<?= $data['weight'] * $data['price']; ?>,-<br>
 ====================<br>
 Perkiraan Selesai :  <?= $tgl2; ?> <br>
 <br>
@@ -63,7 +62,7 @@ Terimakasih atas kunjungan anda<br>
 <br>
 
 Klik link dibawah ini untuk melihat nota digital<br>
-<a href="http://laodinawang.site/order/nota.php?transactions_id=<?= $data['transactions_id']; ?>">http://sislaundry.test/order/nota.php ?<?= $data['transactions_id']; ?> </a>
+<a href="http://localhost/sislaundry/order/nota.php?transactions_id=<?= $data['transactions_id']; ?>">http://localhost/sislaundry/order/nota.php?<?= $data['transactions_id']; ?> </a>
 </p>
 <?php
 }

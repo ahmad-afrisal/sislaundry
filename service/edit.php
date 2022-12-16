@@ -114,11 +114,25 @@
                 </a>
             </li>
 
-            <!-- List Admin -->
+            <?php
+              if($_SESSION["roles"] == "SUPERADMIN") {
+                  echo '
+                  <!-- List Admin -->
+                  <li class="menu-item">
+                      <a href="../admin/index.php" class="menu-link">
+                      <i class="menu-icon tf-icons bx bxs-user-detail"></i>
+                      <div data-i18n="Analytics">List Admin</div>
+                      </a>
+                  </li>
+                  ';
+              }    
+            ?>
+
+            <!-- Service -->
             <li class="menu-item">
-                <a href="../admin/index.php" class="menu-link ">
-                <i class="menu-icon tf-icons bx bxs-user-detail"></i>
-                <div data-i18n="Analytics">List Admin</div>
+                <a href="../profile/profile.php" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-user"></i>
+                <div data-i18n="Analytics">My Profile</div>
                 </a>
             </li>
             
@@ -179,7 +193,7 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="../profile/profile.php">
                             <i class="bx bx-user me-2"></i>
                             <span class="align-middle">My Profile</span>
                         </a>

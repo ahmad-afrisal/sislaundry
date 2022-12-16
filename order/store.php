@@ -4,16 +4,14 @@
 
     $username = $_POST['username'];
     $harga = $_POST['harga'];
-    $pewangi = $_POST['pewangi'];
     $berat = $_POST['berat'];
-    $totalBayar = $_POST['totalBayar'];
-    $inlineRadioOptions = $_POST['inlineRadioOptions'];
+    $inlineRadioOptions = $_POST['is_store_open'];
     $status = "MASUK";
     $admin = $_SESSION['id'];
     $date = date('Y-m-d H:i:s');
 
 
-    mysqli_query($config, "INSERT INTO transactions VALUES ('','$admin','$username','$harga','$pewangi', '$date', '$status','$berat','$totalBayar', '$inlineRadioOptions')");
+    mysqli_query($config, "INSERT INTO transactions VALUES ('','$admin','$username','$harga', '$date', '$status','$berat', '$inlineRadioOptions')");
 
     $_SESSION["sukses"] = 'pesan';
     

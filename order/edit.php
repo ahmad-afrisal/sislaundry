@@ -114,11 +114,25 @@
                 </a>
             </li>
 
-            <!-- List Admin -->
+            <?php
+                if($_SESSION["roles"] == "SUPERADMIN") {
+                    echo '
+                    <!-- List Admin -->
+                    <li class="menu-item">
+                        <a href="../admin/index.php" class="menu-link">
+                        <i class="menu-icon tf-icons bx bxs-user-detail"></i>
+                        <div data-i18n="Analytics">List Admin</div>
+                        </a>
+                    </li>
+                    ';
+                }    
+
+            ?>
+            <!-- Service -->
             <li class="menu-item">
-                <a href="../admin/index.php" class="menu-link ">
-                <i class="menu-icon tf-icons bx bxs-user-detail"></i>
-                <div data-i18n="Analytics">List Admin</div>
+                <a href="../profile/profile.php" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-user"></i>
+                <div data-i18n="Analytics">My Profile</div>
                 </a>
             </li>
             
@@ -177,17 +191,12 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="../profile/profile.php">
                             <i class="bx bx-user me-2"></i>
                             <span class="align-middle">My Profile</span>
                         </a>
                     </li>
-                    <li>
-                        <a class="dropdown-item" href="#">
-                            <i class="bx bx-cog me-2"></i>
-                            <span class="align-middle">Settings</span>
-                        </a>
-                    </li>
+
                     <li>
                         <div class="dropdown-divider"></div>
                     </li>
@@ -233,16 +242,29 @@
                           <label for="status" class="form-label">Status</label>
                           <input type="hidden" class="form-control" id="id" name="id" value="<?= $data['transactions_id']; ?>" placeholder="" />
                           <select class="form-select" id="status" name="status" aria-label="Default select example" required>
-                            <option value="<?= $data['status']; ?>" >MASUK</option>
+                            <option value="<?= $data['status']; ?>" ><?= $data['status']; ?></option>
                             <option value="" disabled>--------------</option>
                             <option value="MASUK">MASUK</option>
-                            <option value="PROSES">SELESAI</option>
+                            <option value="SELESAI">SELESAI</option>
                             <option value="KELUAR">KELUAR</option>
                           </select>
                         </div>
+                        
+                        
+
+                        <?php
+                          if($data['payment_method'] === 'BAYAR NANTI') {
+                        ?>
                         <div class="mb-3">
                           <label class="form-label" for="total" >Total Bayar</label>
-                          <input type="text" class="form-control" id="total" name="harga" value="<?= $data['total']; ?>" onkeyup="OnChange(this.value)" onKeyPress="return isNumberKey(event)" disabled placeholder="" />
+                          <?php 
+                          $query_total = mysqli_query($config, "SELECT total FROM totalorder WHERE transactions_id='$id'"); 
+                          while($x = mysqli_fetch_array($query_total)) {
+                        ?>
+                          <input type="text" class="form-control" id="total" name="harga" value="<?= $x['total']; ?>" onkeyup="OnChange(this.value)" onKeyPress="return isNumberKey(event)" disabled placeholder="" />
+                          <?php
+                          }
+                        ?>
                         </div>
                         <div class="mb-3">
                           <label class="form-label d-block" for="basic-default-company">Pembayaran</label>
@@ -277,6 +299,9 @@
                           <label class="form-label" for="txtDisplay">Kembalian</label>
                           <input type="text" class="form-control" id="txtDisplay" name="txtDisplay" value="" placeholder="" disabled />
                         </div>
+                        <?php
+                          }
+                        ?>
                         <button type="submit" class="btn btn-primary">Simpan</button>
                         <a href="index.php" class="btn btn-secondary">Kembali</a>
                       </form>

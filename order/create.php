@@ -53,6 +53,11 @@
 
 
     <!-- Page CSS -->
+    <style>
+      .metpa {
+        display: none;
+      }
+    </style>
 
     <!-- Helpers -->
     <script src="../assets/vendor/js/helpers.js"></script>
@@ -114,14 +119,28 @@
                 </a>
             </li>
 
-            <!-- List Admin -->
+            <?php
+                if($_SESSION["roles"] == "SUPERADMIN") {
+                    echo '
+                    <!-- List Admin -->
+                    <li class="menu-item">
+                        <a href="../admin/index.php" class="menu-link">
+                        <i class="menu-icon tf-icons bx bxs-user-detail"></i>
+                        <div data-i18n="Analytics">List Admin</div>
+                        </a>
+                    </li>
+                    ';
+                }    
+
+                ?>
+            <!-- Service -->
             <li class="menu-item">
-                <a href="../admin/index.php" class="menu-link ">
-                <i class="menu-icon tf-icons bx bxs-user-detail"></i>
-                <div data-i18n="Analytics">List Admin</div>
+                <a href="../profile/profile.php" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-user"></i>
+                <div data-i18n="Analytics">My Profile</div>
                 </a>
             </li>
-            
+
             <!-- Logout -->
             <li class="menu-item">
                 <a href="../logout.php" class="menu-link">
@@ -177,7 +196,7 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="../profile/profile.php">
                             <i class="bx bx-user me-2"></i>
                             <span class="align-middle">My Profile</span>
                         </a>
@@ -258,17 +277,6 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                          <label for="pewangi" class="form-label">Pewangi</label>
-                          <select class="form-select" id="pewangi" name="pewangi" aria-label="Default select example">
-                            <option selected>Pilih Pewangi</option>
-                            <option value="Baccarat">Baccarat</option>
-                            <option value="Blossom">Blossom</option>
-                            <option value="Lily">Lily</option>
-                            <option value="Vanilla">Vanilla</option>
-                          </select>
-                        </div>
-                        
-                        <div class="mb-3">
                           <label class="form-label" for="basic-default-company">Berat (Kg)</label>
                           <input type="text" class="form-control" name="berat" id="berat" onkeyup="OnChange(this.value)" onKeyPress="" placeholder="" />
                         </div>
@@ -282,9 +290,10 @@
                             <input
                               class="form-check-input"
                               type="radio"
-                              name="inlineRadioOptions"
-                              id="inlineRadio1"
+                              name="is_store_open"
+                              id="yesCheck"
                               value="BAYAR DIAWAL"
+                              onclick="javascript:yesnoCheck();"
                             />
                             <label class="form-check-label" for="inlineRadio1">Bayar Diawal</label>
                           </div>
@@ -292,20 +301,23 @@
                             <input
                                 class="form-check-input"
                                 type="radio"
-                                name="inlineRadioOptions"
-                                id="inlineRadio2"
+                                name="is_store_open"
+                                id="noCheck"
                                 value="BAYAR NANTI"
+                                onclick="javascript:yesnoCheck();"
                             />
                             <label class="form-check-label" for="inlineRadio2">Bayar Nanti</label>
                           </div>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="">Nominal Bayar</label>
-                            <input type="text" class="form-control" id="jmppsn" name="jmlpsn" onkeyup="OnChange(this.value)" placeholder="" />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="txtDisplay">Kembalian</label>
-                            <input type="text" class="form-control" id="txtDisplay" name="txtDisplay" value="" placeholder="" disabled/>
+                        <div id="ifYes" style="display:none">
+                          <div class="mb-3">
+                              <label class="form-label" for="">Nominal Bayar</label>
+                              <input type="text" class="form-control" id="jmppsn" name="jmlpsn" onkeyup="OnChange(this.value)" placeholder="" />
+                          </div>
+                          <div class="mb-3">
+                              <label class="form-label" for="txtDisplay">Kembalian</label>
+                              <input type="text" class="form-control" id="txtDisplay" name="txtDisplay" value="" placeholder="" disabled/>
+                          </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Simpan</button>
                         <a href="index.php" class="btn btn-secondary">Kembali</a>
@@ -354,11 +366,19 @@
     <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
 
     <!-- Main JS -->
+
     <script src="../assets/js/main.js"></script>
 
     <!-- Page JS -->
     <script src="../assets/js/dashboards-analytics.js"></script>
     <script type="text/javascript" language="Javascript">
+      function yesnoCheck() {
+          if (document.getElementById('yesCheck').checked) {
+              document.getElementById('ifYes').style.display = 'inline';
+          }
+          else document.getElementById('ifYes').style.display = 'none';
+
+      }
 
         hargasatuan = document.formD.harga.value;
         document.formD.totalBayar.value = hargasatuan;
@@ -381,6 +401,8 @@
             total2 = jumlah2 - total ;
             document.formD.txtDisplay.value = total2;
         }
+
+       
     </script>
   
   </body>
