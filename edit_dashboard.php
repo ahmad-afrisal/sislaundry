@@ -1,14 +1,16 @@
 <?php
   session_start();
-  include '../config.php';
   if (!isset($_SESSION["login"])) {
     header("Location: login.php");
     exit;
     # code...
 }
+  include 'config.php';
 
 ?>
+
 <!DOCTYPE html>
+
 <html
   lang="en"
   class="light-style layout-menu-fixed"
@@ -24,7 +26,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Dashboard - Order</title>
+    <title>Dashboard - Edit Laporan</title>
     <meta name="description" content="" />
 
     <!-- Favicon -->
@@ -39,32 +41,27 @@
     />
 
     <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="assets/vendor/fonts/boxicons.css" />
 
     <!-- Core CSS -->
-    <link rel="stylesheet" href="../assets/vendor/css/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="../assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="../assets/css/demo.css" />
+    <link rel="stylesheet" href="assets/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="assets/css/demo.css" />
 
     <!-- Vendors CSS -->
-    <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
 
-    <link rel="stylesheet" href="../assets/vendor/libs/apex-charts/apex-charts.css" />
+    <link rel="stylesheet" href="assets/vendor/libs/apex-charts/apex-charts.css" />
 
 
     <!-- Page CSS -->
-    <style>
-      .metpa {
-        display: none;
-      }
-    </style>
 
     <!-- Helpers -->
-    <script src="../assets/vendor/js/helpers.js"></script>
+    <script src="assets/vendor/js/helpers.js"></script>
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="../assets/js/config.js"></script>
+    <script src="assets/js/config.js"></script>
     
   </head>
 
@@ -72,11 +69,11 @@
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
-        
+
         <!-- Menu -->
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
-            <a href="index.html" class="app-brand-link">
+            <a href="index.php" class="app-brand-link">
               <span class="app-brand-text demo menu-text fw-bolder ms-2">SISlaundry</span>
             </a>
 
@@ -96,16 +93,16 @@
             </li>
             
             <!-- Costumer -->
-            <li class="menu-item">
-                <a href="../costumer/index.php" class="menu-link">
+            <li class="menu-item active">
+                <a href="" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-user-plus"></i>
                 <div data-i18n="Analytics">Costumer</div>
                 </a>
             </li>
 
             <!-- Order -->
-            <li class="menu-item active">
-                <a href="" class="menu-link">
+            <li class="menu-item">
+                <a href="../order/index.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-cart-alt"></i>
                 <div data-i18n="Analytics">Order</div>
                 </a>
@@ -165,9 +162,10 @@
                 <i class="bx bx-menu bx-sm"></i>
               </a>
             </div>
+
             <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+
               <ul class="navbar-nav flex-row align-items-center ms-auto">
-                <!-- Place this tag where you want the button to render. -->
 
                 <!-- User -->
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
@@ -202,12 +200,6 @@
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">
-                            <i class="bx bx-cog me-2"></i>
-                            <span class="align-middle">Settings</span>
-                        </a>
-                    </li>
-                    <li>
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
@@ -230,98 +222,105 @@
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Order /</span> Add New Order</h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Edit Laporan</span></h4>
 
               <!-- Basic Layout -->
               <div class="row">
                 <div class="col-xl">
                   <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                      <h5 class="mb-0">New Order</h5>
-                      <!-- <small class="text-muted float-end">Default label</small> -->
+                      <h5 class="mb-0">Edit Laporan</h5>
                     </div>
-                    <div class="card-body">
-                      <form method="POST" action="store.php" id="formD" name="formD">
-                        <div class="mb-3">
-                          <label class="form-label" for="basic-default-fullname" >Nama Customer</label>
-                          <input
-                          class="form-control"
-                          list="datalistOptions"
-                          id="exampleDataList"
-                          name="username"
-                          placeholder="Type to search..."
-                        />
-                        <datalist id="datalistOptions">
-                        <?php
-                            $query = mysqli_query($config, "SELECT * FROM costumers");
-                            while($data = mysqli_fetch_array($query)) {
-                        ?>
-                            <option value="<?= $data['id'];?>"><?= $data['name']; ?></option>
-                        <?php
-                            }
-                        ?>
-                        </datalist>
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlSelect1" class="form-label">Service List</label>
-                            <select class="form-select" id="exampleFormControlSelect1" name="harga"  aria-label="Default select example">
-                                <option value="" selected disabled>Pilih Service</option>
-                                <?php
-                                    $query = mysqli_query($config, "SELECT * FROM service");
-                                    while($ser = mysqli_fetch_array($query)) {
-                                ?>
-                                <option value="<?= $ser['id'];?> <?= $ser['price'];?>"><?= $ser['name']; ?></option>
-                                <?php
-                                    }
-                                ?>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                          <label class="form-label" for="basic-default-company">Berat (Kg)</label>
-                          <input type="number" class="form-control" name="berat" id="berat" onkeyup="OnChange(this.value)" onKeyPress="" placeholder="" />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="basic-default-company">Total Bayar</label>
-                            <input type="number" class="form-control" name="totalBayar" id="totalBayar" value="" placeholder="" />
-                        </div>
-                        <div class="mb-3">
-                          <label class="form-label d-block" for="basic-default-company">Pembayaran</label>
-                          <div class="form-check form-check-inline ">
-                            <input
-                              class="form-check-input"
-                              type="radio"
-                              name="is_store_open"
-                              id="yesCheck"
-                              value="BAYAR DIAWAL"
-                              onclick="javascript:yesnoCheck();"
-                            />
-                            <label class="form-check-label" for="inlineRadio1">Bayar Diawal</label>
-                          </div>
-                          <div class="form-check form-check-inline">
-                            <input
-                                class="form-check-input"
-                                type="radio"
-                                name="is_store_open"
-                                id="noCheck"
-                                value="BAYAR NANTI"
-                                onclick="javascript:yesnoCheck();"
-                            />
-                            <label class="form-check-label" for="inlineRadio2">Bayar Nanti</label>
-                          </div>
-                        </div>
-                        <div id="ifYes" style="display:none">
-                          <div class="mb-3">
-                              <label class="form-label" for="">Nominal Bayar</label>
-                              <input type="text" class="form-control" id="jmppsn" name="jmlpsn" onkeyup="OnChange(this.value)" placeholder="" />
+                    <div class="row">
+                        <div class="col-6">
+                        <div class="card-body">
+                    <?php
+                        $bln = date("m");
+                        if(isset($_POST['submit'])) {
+                            $bln = $_POST['month'];
+                        }
+                       
+                        
+                      ?>
+                      <form method="POST" action="">
+                            <div class="mb-3">
+                            <label class="form-label" for="registration_date">Bulan Ke</label>
+                            <select class="form-select" id="month" name="month" aria-label="Default select example" required>
+                                <option value="<?= $bln; ?>" ><?= $bln; ?></option>
+                                <option value="" disabled>--------------</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                          </select>
                           </div>
                           <div class="mb-3">
-                              <label class="form-label" for="txtDisplay">Kembalian</label>
-                              <input type="text" class="form-control" id="txtDisplay" name="txtDisplay" value="" placeholder="" disabled/>
+                            <label class="form-label" >Total Order</label>
+                            <?php
+                            $query = mysqli_query($config, "SELECT count(total) as totalOrder FROM totalorder WHERE MONTH(date_transaction) = '".$bln."'");
+                        
+                             while ($data = mysqli_fetch_array($query)) {
+                            ?>
+                            <input type="text" class="form-control" value="<?= $data['totalOrder']; ?> "  />
+                            <?php
+                                }
+                            ?>
                           </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-                        <a href="index.php" class="btn btn-secondary">Kembali</a>
+                          <div class="mb-3">
+                            <label class="form-label" >Received</label>
+                            <?php
+                            $query = mysqli_query($config, "SELECT count(total) as received FROM totalorder WHERE STATUS='MASUK' and MONTH(date_transaction) = '".$bln."'");
+                        
+                             while ($data = mysqli_fetch_array($query)) {
+                            ?>
+                            <input type="text" class="form-control" id="phone_number"  value="<?= $data['received']; ?> "  name="phone_number" />
+                            <?php
+                                }
+                            ?>
+                          </div>
+                          
+                          <div class="mb-3">
+                            <label class="form-label" >Completed</label>
+                            <?php
+                                $query = mysqli_query($config, "SELECT count(total) as completed FROM totalorder WHERE STATUS='SELESAI' and MONTH(date_transaction) = '".$bln."'");
+                                
+                                while ($data = mysqli_fetch_array($query)) {
+                            ?>
+                            <input type="text" class="form-control" value="<?= $data['completed']; ?> " />
+                            <?php
+                                }
+                            ?>
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label" >Deliver</label>
+                            <?php
+                                $query = mysqli_query($config, "SELECT count(total) as onProgress FROM totalorder WHERE STATUS='KELUAR' and MONTH(date_transaction) = '".$bln."'");
+                                
+                                while ($data = mysqli_fetch_array($query)) {
+                            ?>
+                            <input type="text" class="form-control" value="<?= $data['onProgress']; ?> " />
+                            <?php
+                                }
+                            ?>
+                          </div>
+                          
+                          <button type="submit" name="submit"   class="btn btn-primary">Lihat</button>
+                          <a href="index.php" class="btn btn-secondary">Kembali</a>
                       </form>
+                      
+                    </div>
+                        </div>
+                        <div class="col-6">
+                            <img src="assets/img/backgrounds/bg.jpg" class="img-fluid" alt="" srcset="">
+                        </div>
                     </div>
                   </div>
                 </div>
@@ -353,57 +352,23 @@
     <!-- / Layout wrapper -->
 
     <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
-    <script src="../assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="../assets/vendor/libs/popper/popper.js"></script>
-    <script src="../assets/vendor/js/bootstrap.js"></script>
-    <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
-    <script src="../assets/vendor/js/menu.js"></script>
+    <script src="assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="assets/vendor/libs/popper/popper.js"></script>
+    <script src="assets/vendor/js/bootstrap.js"></script>
+    <script src="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+    <script src="assets/vendor/js/menu.js"></script>
     <!-- endbuild -->
 
     <!-- Vendors JS -->
-    <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
+    <script src="assets/vendor/libs/apex-charts/apexcharts.js"></script>
 
     <!-- Main JS -->
-
-    <script src="../assets/js/main.js"></script>
+    <script src="assets/js/main.js"></script>
 
     <!-- Page JS -->
-    <script src="../assets/js/dashboards-analytics.js"></script>
-    <script type="text/javascript" language="Javascript">
-      function yesnoCheck() {
-          if (document.getElementById('yesCheck').checked) {
-              document.getElementById('ifYes').style.display = 'inline';
-          }
-          else document.getElementById('ifYes').style.display = 'none';
+    <script src="assets/js/dashboards-analytics.js"></script>
 
-      }
-
-        hargasatuan = document.formD.harga.value;
-        document.formD.totalBayar.value = hargasatuan;
-        jumlah = document.formD.berat.value;
-        document.formD.totalBayar.value = jumlah;
-
-        // jumlah2 = document.formD.jmlpsn.value;
-        // document.formD.txtDisplay.value = jumlah2;
-
-        
-        function OnChange(value){
-            hargasatuan = document.formD.harga.value;
-            hargasatuansplit = hargasatuan.split(" ");
-            test = hargasatuansplit[1];
-            jumlah = document.formD.berat.value;
-            total = jumlah * test;
-            document.formD.totalBayar.value = total;
-
-            jumlah2 = document.formD.jmlpsn.value;
-            total2 = jumlah2 - total ;
-            document.formD.txtDisplay.value = total2;
-        }
-
-       
-    </script>
-  
   </body>
 </html>

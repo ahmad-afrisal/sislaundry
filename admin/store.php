@@ -46,6 +46,6 @@ $password = password_hash($password, PASSWORD_DEFAULT);
 
 
 // tambahkan user baru ke db
-mysqli_query($config, "INSERT INTO users VALUES('', '$name', '$username','$phone_number','$password', 'ADMIN')");
+mysqli_query($config, "INSERT INTO users VALUES(NULL, '$name', '$username','$phone_number','$password', 'ADMIN','ACTIVE')");
 // header('Location:index.php');
 ?>

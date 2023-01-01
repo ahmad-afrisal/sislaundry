@@ -24,8 +24,13 @@ function registrasi($data){
     $password = password_hash($password,PASSWORD_DEFAULT);
 
     //insert
-    mysqli_query($config,"INSERT INTO users VALUES('','$namaadmin','$username','$nohp','$password','ADMIN')");
+    mysqli_query($config,"INSERT INTO users VALUES(NULL,'$namaadmin','$username','$nohp','$password','ADMIN','ACTIVE')");
 
+    echo "
+            <script>
+                alert('User Berhasil Di Tambahkan');
+            </script>
+        ";
     
 }
 

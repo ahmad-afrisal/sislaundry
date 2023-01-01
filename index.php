@@ -122,8 +122,8 @@
                                     <?php
                                         if($data['status']== "MASUK"){
                                             echo '<span class="badge bg-label-info me-1">Masuk</span>';
-                                        } elseif ($data['status']== "PROSES") {
-                                            echo '<span class="badge bg-label-warning me-1">Proses</span>';
+                                        } elseif ($data['status']== "SELESAI") {
+                                            echo '<span class="badge bg-label-warning me-1">Selesai</span>';
                                         } else {
                                             echo '<span class="badge bg-label-success me-1">Keluar</span>';
                                         }

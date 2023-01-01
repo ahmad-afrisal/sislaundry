@@ -257,6 +257,13 @@ if (!isset($_SESSION["login"])) {
                           <label class="form-label" for="phone_number">No HP</label>
                           <input type="text" class="form-control" id="phone_number" name="phone_number" value="<?= $data['phone_number']; ?>" placeholder="" required/>
                         </div>
+                        <div class="mb-3">
+                          <label class="form-label" for="user_status">User Status</label>
+                          <select name="" id="">
+                            <option value=""></option>
+                          </select>
+                          <!-- <input type="text" class="form-control" id="user_status" name="user_status" value="<?= $data['user_status']; ?>" placeholder="" required/> -->
+                        </div>
                         <button type="submit" class="btn btn-primary">Simpan</button>
                         <a href="index.php" class="btn btn-secondary">Kembali</a>
                       </form>

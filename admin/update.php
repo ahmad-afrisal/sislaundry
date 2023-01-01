@@ -13,9 +13,10 @@ if (!isset($_SESSION["login"])) {
     $name = $_POST['name'];
     $username = $_POST['username'];
     $phone_number = $_POST['phone_number'];
+    $user_status = $_POST['user_status'];
 
 
-    mysqli_query($config, "UPDATE users SET name='$name', username='$username', phone_number='$phone_number'
+    mysqli_query($config, "UPDATE users SET name='$name', username='$username', phone_number='$phone_number', user_status='$user_status'
                         WHERE ID=$id");
 
     $_SESSION["sukses"] = 'pesan';

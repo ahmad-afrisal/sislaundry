@@ -244,7 +244,7 @@ if (!isset($_SESSION["login"])) {
                           </div>
                           <div class="mb-3">
                             <label class="form-label" for="price">Harga</label>
-                            <input type="text" class="form-control" id="price" name="price" placeholder="" required />
+                            <input type="number" class="form-control" id="price" name="price" placeholder="" required />
                           </div>
                           <div class="mb-3">
                             <label class="form-label" for="basic-default-fullname">Kategori</label>

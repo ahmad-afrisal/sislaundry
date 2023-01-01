@@ -97,11 +97,11 @@ if (!isset($_SESSION["login"])) {
                     </a>
                 </li>
 
-                <!-- Order -->
+                <!-- Costumer -->
                 <li class="menu-item">
-                    <a href="order/index.php" class="menu-link">
-                    <i class="menu-icon tf-icons bx bxs-cart-alt"></i>
-                    <div data-i18n="Analytics">Order</div>
+                    <a href="costumer/index.php" class="menu-link">
+                    <i class="menu-icon tf-icons bx bxs-user-plus"></i>
+                    <div data-i18n="Analytics">Category</div>
                     </a>
                 </li>
 
@@ -110,6 +110,14 @@ if (!isset($_SESSION["login"])) {
                     <a href="service/index.php" class="menu-link">
                     <i class="menu-icon tf-icons bx bxs-package"></i>
                     <div data-i18n="Analytics">Service</div>
+                    </a>
+                </li>
+
+                <!-- Order -->
+                <li class="menu-item">
+                    <a href="order/index.php" class="menu-link">
+                    <i class="menu-icon tf-icons bx bxs-cart-alt"></i>
+                    <div data-i18n="Analytics">Pesanan</div>
                     </a>
                 </li>
 
@@ -389,9 +397,7 @@ if (!isset($_SESSION["login"])) {
                             <i class="bx bx-dots-vertical-rounded"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="transactionID">
-                            <a class="dropdown-item" href="javascript:void(0);">Last 28 Days</a>
-                            <a class="dropdown-item" href="javascript:void(0);">Last Month</a>
-                            <a class="dropdown-item" href="javascript:void(0);">Last Year</a>
+                            <a class="dropdown-item" href="edit_dashboard.php">Edit</a>
                             </div>
                         </div>
                     </div>
